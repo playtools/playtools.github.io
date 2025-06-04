@@ -1,0 +1,564 @@
+/***********************************
+ * Playtools CSS 
+ * Last updated: 22-Jan-2024
+ ***********************************/
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none !important;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+:root {
+    --main-bg: #111;
+    --menu-sel: #777;
+    --menu-bg: #333;
+    --menu-slider: #222;
+    --primary: #ccc;
+    --secondary: #999;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: var(--main-bg);
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+#preview {
+    background: white;
+    border: none;
+    width: 100%;
+    height: calc(100% - 30px);
+    margin: 0;
+    padding: 0;
+}
+
+.split {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.gutter {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    cursor: row-resize;
+}
+
+.split.split-horizontal,
+.gutter.gutter-horizontal {
+    height: 100%;
+    float: left;
+}
+
+#html,
+#css,
+#js {
+    z-index: 100;
+}
+
+.view-line {
+    z-index: 100;
+}
+
+/*
+.save-button {
+    position: absolute;
+    top: 0;
+    left: 630px;
+    cursor: pointer;
+    z-index: 9999 !important;
+}
+*/
+
+#run {
+    display: none;
+}
+
+#dummy-title {
+    position: absolute;
+    top: 12px;
+    left: 600px;
+    width: 20px;
+    display: none;
+}
+
+#dummy-layout {
+    position: absolute;
+    top: 12px;
+    left: 700px;
+    width: 20px;
+    display: none;
+}
+
+#dummy-theme {
+    position: absolute;
+    top: 12px;
+    left: 100px;
+    width: 20px;
+    display: none;
+}
+
+#dummy-id {
+    position: absolute;
+    top: 12px;
+    left: 1000px;
+    width: 150px;
+    display: none;
+}
+
+button.btn-submit {
+    /* background: var(--menu-slider); */
+    background: black;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    height: 40px;
+    border: none;
+    color: var(--primary);
+    font-size: 14px;
+    padding: 8px 20px;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+/* Drop down menu */
+
+/* CSSTerm.com Horizontal Easy DropDown CSS menu */
+
+.drop_menu {
+    /* background: var(--menu-slider); */
+    background: black;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    /*  height:40px;    */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.drop_menu li {
+    float: left;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.drop_menu li a {
+    padding: 8px 30px 8px 20px;
+    display: block;
+    color: var(--primary);
+    text-decoration: none;
+    font: 14px arial, verdana, sans-serif;
+}
+
+/* Submenu */
+
+.drop_menu ul {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    list-style-type: none;
+    z-index: 9999 !important;
+    padding-bottom: 10px !important;
+    background-color: #111;
+    border: 1px solid #444;
+    border-top: 1px solid #222;
+    /* box-shadow: 5px 5px 20px black; */
+}
+
+.drop_menu li:hover,
+button.btn-submit:hover {
+    position: relative;
+    height: 40px;
+    background: #333;
+    border-right: 1px solid #333;
+    border-left: 1px solid #333;
+}
+
+.drop_menu li:hover ul {
+    left: 0;
+    top: 38px;
+    padding: 0;
+}
+
+.drop_menu li:hover ul li a {
+    padding: 10px;
+    height: 20px;
+    display: block;
+    width: 168px;
+    text-indent: 15px;
+    color: #ccc;
+    white-space: nowrap;
+}
+
+a.no-select:hover {
+    background-color: var(--menu-bg) !important;
+    height: 20px;
+    cursor: default !important;
+}
+
+.drop_menu li:hover ul li a.large {
+    width: 300px;
+}
+
+.drop_menu li:hover ul li a.medium {
+    width: 200px;
+}
+
+.drop_menu li:hover ul li a:hover {
+    background: #333;
+    height: 20px;
+}
+
+.drop_menu .align-right {
+    float: right;
+}
+
+.drop_menu hr {
+    border-bottom: 1px solid var(--secondary);
+}
+
+/* Toggle button */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+    top: 4px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: -2px;
+    left: -1px;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: 1px solid #777;
+    background-color: #333;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--menu-slider);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+}
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 17px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Menus and Icons */
+
+[class^="material"] {
+    color: #00bfff;
+    font-size: 20px !important;
+}
+
+span.icon-label {
+    color: #ccc;
+    font-size: 13px !important;
+    position: relative;
+    top: -4px;
+    left: 4px;
+}
+
+span.icon-dropdown {
+    color: #ccc;
+    position: relative;
+    top: 2px;
+}
+
+ul.sub-menu span.sub-menu-item {
+    position: relative;
+    left: -20px;
+}
+
+.logo {
+    position: relative;
+    top: 2px;
+}
+
+/***** Focus Styles *****/
+
+/* Removes default focus */
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    border: 1px solid #053a5f;
+    outline: 3px solid #053a5f;
+    outline-offset: 0.125rem;
+}
+
+/******** Firefox ********/
+
+input[type="range"]:focus::-moz-range-thumb {
+    border: 1px solid #053a5f;
+    outline: 3px solid #053a5f;
+    outline-offset: 0.125rem;
+}
+
+.footer {
+    position: fixed;
+    left: 10px;
+    bottom: 8px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer ul li {
+    display: inline;
+    padding: 10px 10px 0 0;
+}
+
+.footer ul li a {
+    color: #999;
+    text-decoration: none;
+}
+
+.footer ul li a:hover {
+    color: skyblue;
+    text-decoration: underline;
+}
+
+#splashscreen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    background-color: black;
+}
+
+.load-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+/****************/
+
+/* Range Slider */
+
+/****************/
+
+.range-container {
+    width: calc(100% + 20px);
+    white-space: nowrap;
+    padding-bottom: 10px;
+}
+
+.range {
+    -webkit-appearance: none;
+    width: calc(100% - 90px);
+    height: 6px;
+    background: #999;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.range:hover {
+    opacity: 1;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #efefef;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.range::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #efefef;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+/* Splitter */
+
+#top-component {
+    bottom: 20em;
+    margin-bottom: 5px;
+}
+
+#horizontal-divider {
+    bottom: 20em;
+    height: 5px;
+}
+
+#bottom-component {
+    height: 20em;
+}
+
+#left-component {
+    width: 10em;
+}
+
+#vertical-divider {
+    left: 10em;
+    width: 5px;
+}
+
+#right-component {
+    left: 10em;
+    margin-left: 5px;
+}
+
+#top-component2 {
+    bottom: 50%;
+    margin-bottom: 5px;
+}
+
+#horizontal-divider2 {
+    bottom: 50%;
+    height: 5px;
+}
+
+#bottom-component2 {
+    height: 50%;
+}
+
+/* Library menu */
+
+.list-label {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 4px;
+    background: #00bfff;
+    color: #111;
+    padding: 0 4px 0 4px;
+    font-size: 70%;
+    border-radius: 10px;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 2px;
+    /* required for custom scroll bar */
+}
+
+.lang-logo {
+    position: absolute;
+    right: 16px;
+    bottom: 6px;
+    z-index: 100;
+    opacity: 0.3;
+}
+
+.footer-message {
+    position: fixed;
+    bottom: 0;
+    left: 40%;
+    color: white;
+    font-size: 13px;
+    background-color: #007bff;
+    height: 30px;
+    padding: 0 20px;
+}
+
+.footer-message-close {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    left: 10px;
+    top: 5px;
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+.editor-mode {
+    background: #0195c1;
+    color: black;
+    padding: 3px 7px;
+    border-radius: 12px;
+    font-size: 11px;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+.badge {
+    background-color: orange;
+    padding: 2px 4px;
+    font-size: 10px;
+    color: black;
+    position: relative;
+    top: -5px;
+    left: 6px;
+    border-radius: 10px;
+}
+
+ 

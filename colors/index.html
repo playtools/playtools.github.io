@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--
+Modified by: Hamza Javed, P Tools
+-->
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+     <script type="text/javascript" src="./js/vendor/d3.js"></script>
+    <script type="text/javascript" src="./js/RXB.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald' type='text/css'>
+    <link href="css/style.css" rel="stylesheet">
+<link rel="shortcut icon" href="/images/favicion.png" />
+     <meta name="robots" content="index, follow">
+    <title>Color Palette Maker - Create & Preview Colors | P Tools</title>
+    <meta name="description" content="Create and customize vibrant color palettes. Adjust hues, tones, and shades for designs. Preview results instantly for creative projects." />
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/colors/index.html" />
+    <style>
+        .logo-header {
+            background: url('../images/logo-footer.png') no-repeat;
+            width: 170px;
+            height: 45px;
+            position: absolute;
+            top: 10;
+            left: 10;
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://playtools.github.io/" target="_blank" title="P Tools">
+        <div class="logo-header" title="P Tools Color Explorer"></div>
+    </a>
+    <div id="download-buttons">
+        <button onclick="download_svg();" title="Download the current color wheel as SVG">Download SVG</button>
+        <button onclick="download_png();" title="Download a PNG rendering of the current color wheel">Download
+            PNG</button>
+    </div>
+    <div id="content">
+    </div>
+    <div id="sidebar">
+        <div class="accordion-section show">
+            <button>Color Preview</button>
+            <div class="content">
+                <p>
+                    <input id="color-preview-rgb" onclick="this.setSelectionRange(0, this.value.length);"
+                        value="#9c744a" />
+                <div id="color-preview"></div>
+                <div id="color-preview-neutrals"></div>
+                <button onclick="random_click()" class="circle small"
+                    title="Randomly select a color from the current color wheel"><i class="fa fa-random"
+                        aria-hidden="true"></i></button>
+                <button onclick="numneutrals = Math.max(--numneutrals, 2); redo_last_click()" class="circle small"
+                    title="Reduce number of neutrals to display"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                <button onclick="numneutrals = Math.min(++numneutrals, 15); redo_last_click();" class="circle small"
+                    title="Increase number of neutrals to display"><i class="fa fa-plus"
+                        aria-hidden="true"></i></button>
+                <button onclick="download_neutrals_png()" class="circle small"
+                    title="Download a PNG rendering of the current neutral swatch"><i class="fa fa-arrow-down"
+                        aria-hidden="true"></i></button>
+                </p>
+            </div>
+        </div>
+        <div class="accordion-section show">
+            <button>Basic Controls</button>
+            <div class="content">
+                <p>
+                    Brightness
+                    <input oninput="brightness_range_oninput(this);" type="range" min="-255" max="255" step="1"
+                        value="0" /><br />
+                    <span class="value" id="brightness-range">0</span>
+                </p>
+                <p>
+                    Divisions
+                    <input oninput="divisions_range_oninput(this);" type="range" min="1" max="20" step="1"
+                        value="3" /><br />
+                    <span class="value" id="divisions-range">12</span>
+                </p>
+                <p>
+                    Rings
+                    <input oninput="rings_range_oninput(this);" type="range" min="1" max="50" step="1"
+                        value="5" /><br />
+                    <span class="value" id="rings-range">5</span>
+                </p>
+                <p>
+                    Rotation
+                    <input oninput="rotation_range_oninput(this);" type="range" min="0" max="360" step="1"
+                        value="0" /><br />
+                    <span class="value" id="rotation-range">0&deg;</span>
+                </p>
+            </div>
+        </div>
+        <div class="accordion-section">
+            <button>Stroke</button>
+            <div class="content">
+                <p>
+                    Stroke Color
+                <div id="stroke-color-previews"></div>
+                <span class="value">also changes color harmonies mask colors</span>
+                </p>
+                <p>
+                    Stroke Width
+                    <input oninput="strokewidth_range_oninput(this);" type="range" min="0" max="15" step="1"
+                        value="1" /><br />
+                    <span class="value" id="strokewidth-range">1px</span>
+                </p>
+            </div>
+        </div>
+        <div class="accordion-section">
+            <button>Color Harmonies</button>
+            <div class="content">
+                <p>
+                    Mask<br />
+                    <select onchange="apply_mask(this.value)">
+                        <option value="">None</option>
+                        <option value="analogous">Analogous</option>
+                        <option value="complementary">Complementary</option>
+                        <option value="monochromatic">Monochromatic</option>
+                        <option value="split-complementary">Split Complementary</option>
+                        <option value="square">Square</option>
+                        <option value="tetradic">Tetradic</option>
+                        <option value="diadic">Diadic</option>
+                        <option value="triadic">Triadic</option>
+                    </select>
+                </p>
+                <p>
+                    Mask Rotation
+                    <input id="maskrotation-range" oninput="maskrotation_range_oninput(this);" type="range" min="0"
+                        max="360" step="1" value="0" /><br />
+                    <span class="value" id="maskrotation-range-text">0.00&deg;</span>
+                </p>
+                <p>
+                    Mask Spread
+                    <input id="maskspread-range" oninput="maskspread_range_oninput(this);" type="range" min="0" max="10"
+                        step="1" value="0" /><br />
+                    <span class="value" id="maskspread-range-text">0</span>
+                </p>
+            </div>
+        </div>
+        <!--
+			<div class="accordion-section">
+				<button>Border</button>
+				<div class="content">
+					<p>
+						Border Width
+						<input oninput="borderwidth_range_oninput(this);" type="range" min="0" max="80" step="10" value="10" /><br />
+						<span class="value" id="borderwidth-range">10</span>
+					</p>
+					<p>
+						Border Color
+						<input oninput="bordercolor_range_oninput(this);" type="range" min="0" max="20" step="1" value="0" /><br />
+						<span class="value" id="bordercolor-range">0</span>
+					</p>
+				</div>
+			</div>
+			-->
+        <div class="accordion-section">
+            <button>Miscellaneous</button>
+            <div class="content">
+                <p>
+                    Division Variance
+                    <input oninput="divisionvariance_range_oninput(this);" type="range" min="1" max="10" step="1"
+                        value="1" /><br />
+                    <span class="value" id="divisionvariance-range">1</span>
+                </p>
+                <p>
+                    Ring Variance
+                    <input oninput="ringvariance_range_oninput(this);" type="range" min="1" max="10" step="1"
+                        value="1" /><br />
+                    <span class="value" id="ringvariance-range">1</span>
+                </p>
+                <p>
+                    Save As...<br />
+                    <input type="text" id="prefix" placeholder="prefix"></input><br />
+                    <span class="value">prefix filename for saved images</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="accordion-section" style="display:none;">
+            <button>Interpolation</button>
+            <div class="content" id="interpolation-content">
+                <form action="">
+                    <label><input checked name="1" type="radio" onchange="enable_ryb_interpolation()"
+                            title="Enable RYB Interpolation" />RYB</label><br />
+                    <label><input name="1" type="radio" onchange="disable_ryb_interpolation();"
+                            title="Disable RYB Interpolation" />RGB (No Interpolation)</label><br />
+                    <label><input name="1" type="radio" onchange="enable_custom_interpolation()"
+                            title="Enable Custom Interpolation" />Random</label><br />
+                </form>
+                <button onclick="random_magic_colors(); colorize();" id="randomize-button"
+                    title="Generate random Magic Colors">Randomize</button>
+            </div>
+        </div>
+        <div>
+            <a href="../colorlist/" target="_blank"
+                style="position:fixed; bottom:20px; left:20px; text-decoration:none; color:white; z-index:999; font-family:Oswald,Arial,sans-serif;">
+                See web-safe color list &nbsp; <i class="fa fa-external-link" aria-hidden="true"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        window.addEventListener("beforeunload", function (e) {
+            var confirmationMessage = "\o/";
+
+            e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+            return confirmationMessage; // Gecko, WebKit, Chrome <34
+        });
+    </script>
+</body>
+
+</html>

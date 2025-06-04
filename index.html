@@ -1,0 +1,809 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+<title>P Tools - Ultimate Online Code Editor with Live Preview & Minification</title>
+<meta name="description" content="P Tools is an advanced online code editor with real-time live preview for HTML, CSS, JavaScript, and Python. Instantly minify code, generate color palettes" />
+<link rel="shortcut icon" href="/images/favicion.png" />
+<meta name="author" content="Hamza Javed">
+<meta name="Publisher" content="Hamza Javed">
+ <link rel="canonical" href="https://playtools.github.io" />
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #21262d;
+            z-index: 1000;
+            padding: 0rem 0;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #58a6ff, #79c0ff, #a5f3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e6edf3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #238636, #2ea043);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(35, 134, 54, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(88, 166, 255, 0.1) 0%, rgba(13, 17, 23, 1) 70%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #58a6ff, #79c0ff, #a5f3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(88, 166, 255, 0.3)); }
+            to { filter: drop-shadow(0 0 30px rgba(88, 166, 255, 0.5)); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #8b949e;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #238636, #2ea043);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #58a6ff;
+            padding: 1rem 2rem;
+            border: 2px solid #58a6ff;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(35, 134, 54, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: #58a6ff;
+            color: #0d1117;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(88, 166, 255, 0.3);
+        }
+
+        /* Code Preview */
+        .code-preview {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-header {
+            background: #21262d;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f56; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #27ca3f; }
+
+        .code-content {
+            padding: 1.5rem;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .code-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .keyword { color: #ff7b72; }
+        .string { color: #a5d6ff; }
+        .comment { color: #8b949e; font-style: italic; }
+        .function { color: #d2a8ff; }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #58a6ff, #79c0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #58a6ff, #2ea043, #da3633, #f85149);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border-color: #58a6ff;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #58a6ff;
+        }
+
+        .feature-card p {
+            color: #8b949e;
+            line-height: 1.7;
+        }
+
+        /* Language Support */
+        .languages {
+            background: #0d1117;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .languages h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #e6edf3;
+        }
+
+        .lang-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lang-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lang-card:hover {
+            transform: scale(1.05);
+            border-color: #58a6ff;
+            box-shadow: 0 10px 25px rgba(88, 166, 255, 0.2);
+        }
+
+        .lang-card .lang-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .lang-card .lang-name {
+            font-weight: 600;
+            color: #e6edf3;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #161b22, #0d1117);
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: #8b949e;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Floating Elements */
+        .floating-code {
+            position: absolute;
+            font-family: 'Consolas', monospace;
+            color: #30363d;
+            font-size: 0.8rem;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(5deg); opacity: 0.6; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .nav-links { display: none; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+         /* Header styles */
+        .header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 1rem 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e6edf3;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Dropdown menu styles */
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown > a {
+            color: #e6edf3;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            display: block;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-links .dropdown > a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #161b22;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            z-index: 1001;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-content li {
+            display: block;
+            padding: 0;
+        }
+
+        .nav-links .dropdown-content a {
+            color: #e6edf3;
+            padding: 0.75rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .nav-links .dropdown-content a:hover {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        /* Show dropdown on hover and toggle */
+        .nav-links .dropdown:hover .dropdown-content,
+        .nav-links .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Active state for clicked dropdown */
+        .nav-links .dropdown.active > a {
+            color: #58a6ff;
+            background: #21262d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #161b22;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links .dropdown {
+                width: 90%;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links .dropdown > a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: 1px solid #30363d;
+            }
+            
+            .nav-links .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: #21262d;
+                margin-top: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .nav-links .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        /* Demo content */
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">P TOOLS</a>
+            </div>
+            
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">Code Live Preview ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/html-playground/index.html">HTML Preview</a></li>
+                        <li><a href="/py/index.html">Python Preview</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Minify Code ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/minify/css-minifier-app/public/index.html">CSS Minifier</a></li>
+                        <li><a href="/minify/js-minify/index.html">JS Minifier</a></li>
+                        <li><a href="/minify/py-minifiy/index.html">Python Minifier</a></li>
+                        <li><a href="/minify/html-minify/index.html">HTML Minifier</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Other Tools ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/ai/index.html">Chat Bot</a></li>
+                        <li><a href="/colorlist/index.html">Colors List</a></li>
+                        <li><a href="/colors/">Color Circule</a></li>
+                        <li><a href="/cssgen/index.html">CSS Grid Maker</a></li>
+                        <li><a href="/designer/index.html">Design Making</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<br><br><br>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-code" style="top: 20%; left: 10%;">const magic = true;</div>
+        <div class="floating-code" style="top: 60%; right: 15%;">function createAwesome() {</div>
+        <div class="floating-code" style="bottom: 30%; left: 5%;">}</div>
+        
+        <div class="hero-content">
+            <h1>Code. Preview. Deploy.</h1>
+            <p>The ultimate code editor with live preview for HTML, CSS, JavaScript, and Python. Experience real-time coding with advanced features like code minification and CSS color palette generator.</p>
+            
+            <div class="hero-buttons">
+                <a href="/html-playground/index.html" class="btn-primary">Start Coding Now</a>
+                <a href="/ai/index.html" class="btn-secondary">Ask AI Bot</a>
+            </div>
+
+            <div class="code-preview">
+                <div class="code-header">
+                    <div class="code-dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <span style="margin-left: 1rem; color: #8b949e;">main.js - Live Preview</span>
+                </div>
+                <div class="code-content">
+                    <div class="code-line"><span class="comment">// Live preview updates instantly</span></div>
+                    <div class="code-line"><span class="keyword">const</span> <span class="function">editor</span> = <span class="string">'P Tools'</span>;</div>
+                    <div class="code-line"><span class="keyword">function</span> <span class="function">createMagic</span>() {</div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">'Instant Preview!'</span>;</div>
+                    <div class="code-line">}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3>Live Preview</h3>
+                <p>See your changes instantly with real-time preview for HTML, CSS, JavaScript, and Python. No refresh needed.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎨</span>
+                <h3>CSS Color Palette</h3>
+                <p>Generate beautiful color schemes and gradients with our built-in CSS color palette generator.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📦</span>
+                <h3>Code Minification</h3>
+                <p>Optimize your code automatically with advanced minification for better performance and smaller file sizes.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🔥</span>
+                <h3>Multi-Language Support</h3>
+                <p>Write and preview HTML, CSS, JavaScript, and Python all in one powerful editor environment.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🚀</span>
+                <h3>Instant Download</h3>
+                <p>Download your projects instantly with one-click in source file.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">💾</span>
+                <h3>Cloud Sync</h3>
+                <p>Your projects are automatically saved and synced across all your devices in real-time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Language Support -->
+    <section class="languages" id="languages">
+        <h2>Supported Languages</h2>
+        <div class="lang-grid">
+            <div class="lang-card">
+                <span class="lang-icon">🌐</span>
+                <div class="lang-name">HTML5</div>
+            </div>
+            <div class="lang-card">
+                <span class="lang-icon">🎨</span>
+                <div class="lang-name">CSS3</div>
+            </div>
+            <div class="lang-card">
+                <span class="lang-icon">⚡</span>
+                <div class="lang-name">JavaScript</div>
+            </div>
+            <div class="lang-card">
+                <span class="lang-icon">🐍</span>
+                <div class="lang-name">Python</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Transform Your Coding?</h2>
+        <p>Join thousands of developers who've already revolutionized their workflow with P Tools.</p>
+        <a href="#" class="btn-primary" style="font-size: 1.2rem; padding: 1.25rem 2.5rem;">Get Started - It's Free!</a>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(13, 17, 23, 0.98)';
+            } else {
+                header.style.background = 'rgba(13, 17, 23, 0.95)';
+            }
+        });
+
+        // Animate feature cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add slideUp animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Interactive code preview
+        const codeLines = document.querySelectorAll('.code-line');
+        let currentLine = 0;
+
+        setInterval(() => {
+            codeLines.forEach(line => line.style.background = 'transparent');
+            codeLines[currentLine].style.background = 'rgba(88, 166, 255, 0.1)';
+            codeLines[currentLine].style.borderRadius = '4px';
+            codeLines[currentLine].style.padding = '2px 4px';
+            currentLine = (currentLine + 1) % codeLines.length;
+        }, 2000);
+    </script>
+</body>
+</html>

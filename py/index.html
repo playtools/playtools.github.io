@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Python Playground: Live Preview for Interactive IDE for Coding</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Experience the ultimate Python Playground! Write, run, and learn Python code in an interactive IDE designed for all skill levels. Start coding today!">
+    <meta name="keywords"
+        content="Python Playground, playground python, python online playground, python playground online, online python playground, Python coding run, how can i open python coding, P Tools, P Tools, liveweave, liveweaver, live preview, Python live preview">
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/py/" />
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+
+    <!-- Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/alertify.core.css?1735105333" />
+    <link rel="stylesheet" href="../css/alertify.default.css?1735105333" />
+    <link rel="stylesheet" href="../css/alertify.bootstrap.css?1735105333" />
+    <link rel="shortcut icon" href="https://liveweave.com/images/favicon.svg?1735105333" />
+
+    <link rel="stylesheet" href="../css/liveweave.css?1735105333" />
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.history.js?1735105333"></script>
+    <script type="text/javascript" src="../js/alertify.js?1735105333"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,-25" />
+
+    <style>
+        #run {
+            display: block;
+            float: left;
+            position: relative;
+            top: 2px;
+        }
+
+        #preview {
+            background: #222;
+            color: #ddd;
+            padding: 4px 0 4px 8px;
+            font-size: 15px;
+            border-top: 2px solid #111;
+            font-family: 'Courier New', monospace;
+            resize: none;
+            overflow-y: scroll !important;
+        }
+    </style>
+    <!-- Monaco -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+
+</head>
+
+<body onresize="resizer()">
+    <!-- Start your code here -->
+
+    <div id="splashscreen">
+        <div class="load-container">
+            <div class="loader-text">
+                <span style="position: relative;top:-40px;left:40px;font-size:30px;font-weight: thin;">Loading...<span>
+            </div>
+        </div>
+    </div>
+
+    <div class="drop">
+        <ul class="drop_menu">
+
+            <!-- Left align menu -->
+            <li>
+                <a href='#'><span
+                        style="background: url('../images/logo-2.svg') no-repeat;display:inline-block;width:30px;height:20px"></span>
+                    <span class="icon-label" style="display:inline-block;">P Tools<span
+                            class="editor-mode">Python</span></span>
+                    <span class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li id="home"><a href='https://playtools.github.io/' class="medium"><span
+                                class="sub-menu-item"><span class="material-symbols-outlined">home</span> <span
+                                    class="icon-label">Home</span></span>
+                        </a>
+                    </li>
+                    <li id="css-explorer"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">data_object</span> <span class="icon-label">CSS
+                                    Explorer</span> <span class="material-symbols-outlined">arrow_outward</span> </span>
+                        </a>
+                    </li>
+                    <li id="color-explorer"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">Palette</span> <span class="icon-label">Color
+                                    Explorer</span> <span class="material-symbols-outlined">arrow_outward</span>
+                            </span></a>
+                    </li>
+                    <li id="vector-editor"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">Polyline</span> <span class="icon-label">Graphics
+                                    Editor</span> <span class="material-symbols-outlined">arrow_outward</span>
+                            </span></a>
+                    </li>
+                    <li id="generative-ai"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">outbox_alt</span> <span
+                                    class="icon-label">Generative AI</span>
+                                <span class="material-symbols-outlined">arrow_outward</span> </span></a>
+                    </li>
+                    <li id="web"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">code</span> <span class="icon-label">Web
+                                    Playground</span>
+                                <span class="badge">Default</span>
+                                <span class="material-symbols-outlined">arrow_outward</span> </span></a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href='#'><span class="material-symbols-outlined">build</span> <span class="icon-label">Tools</span>
+                    <span class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li id="load-template"><a href="#" class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">restart_alt</span> <span class="icon-label">Load
+                                    "Numpy" example</span></span></a></li>
+                    <!--
+                                    <li id='format-py' onclick='formatPY()'><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">code</span> <span
+                                    class="icon-label">Format Python code</span></span></a></li>
+                    -->
+                </ul>
+            </li>
+
+
+            <!-- download -->
+            <li id="download-code">
+                <a href='#'><span class="material-symbols-outlined">download</span> <span
+                        class="icon-label">Download</span></a>
+            </li>
+
+            <!-- submit -->
+            <li>
+                <button type="submit" form="myform" class="btn-submit">
+                    <span class="material-symbols-outlined">cloud_upload</span> <span class="icon-label">Save</span>
+                </button>
+            </li>
+
+
+
+            </li>
+
+            <!-- settings -->
+            <li class="align-right" style="padding-right: 25px;">
+                    <a href='#'><span class=" material-symbols-outlined">settings</span> <span
+                    class="icon-label">Settings</span> <span
+                    class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a>
+                            <div class="range-container">
+                                <!-- <span>10<span style="font-size: 80%">px</span></span> -->
+                                <input type="range" min="10" max="24" value="14" class="range" id="range-font-size">
+                                <!-- <span>24<span style="font-size: 80%">px</span></span> -->
+                                <span><span id="current-font-size">14</span><span
+                                        style="font-size: 80%">px</span></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-theme' onclick='checkTheme()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Night mode
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-line-number' onclick='checkLineNumber()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Line number
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" id='chk-mini-map' onclick='checkMiniMap()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Mini map
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-word-wrap' onclick='checkWordWrap()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Word wrap
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select" id="settings-reset"><span class="material-symbols-outlined"
+                                style="position:relative;left:-10px;top:4px;">sync_alt</span> Reset Settings
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="align-right" id="run">
+                <a href='#'>
+                    <span class="material-symbols-outlined">smart_display</span> <span class="icon-label">Run</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Editor form -->
+    <form action="submit-py.php" method="post" id="myform">
+        <input type="hidden" name="editorType" value="py">
+        <div
+            style="position:fixed;top:40px;left:0;width:100%;height:calc(100% - 70px);overflow: hidden; background:var(--main-bg);z-index:0;">
+            <div id="a" class="split split-horizontal" style="overflow:hidden;">
+                <div id="py" class="split content" style="position:relative;">
+                    <img src="python.svg" style="height:40px;" class="lang-logo" alt="Python Window">
+                </div>
+            </div>
+            <div id="b" class="split split-horizontal">
+                <pre id="preview" class="split content"></pre>
+            </div>
+        </div>
+
+        <!-- <div style="position:absolute;bottom:0;left:0;width:300px;height:200px;z-index:99;"> -->
+        <div style="display: none;">
+            <textarea id="py-source" name="py-source" style="width:100%;height:100%;"></textarea>
+        </div>
+
+        <input type="text" name="dummy-title" id="dummy-title" value="" />
+        <input type="text" name="dummy-layout" id="dummy-layout" value="1" />
+        <input type="text" name="dummy-theme" id="dummy-theme" value="0" />
+        <input type="text" name="dummy-privacy" id="dummy-privacy" value="0" />
+        <input type="text" name="dummy-id" id="dummy-id" value="" />
+    </form>
+
+    <footer class="footer">
+        <ul style="font-size:12px;">
+            <li><a href="../about/index.html" target="_blank" title="About us">About</a></li>
+           
+            <li><a href="../colorlist/" target="_blank" title="P Tools Color Lab">Colors</a></li>
+            <li><a href="../contact-us/index.html" target="_blank" title="Contact us">Contact</a></li>
+            <li><a href="../privacy-policy.html" target="_blank" title="P Tools Privacy Policy">Privacy</a></li>
+        </ul>
+    </footer>
+    <aside class="footer-message" style="border-radius:15px;background-color: #00bfff; color: black;">
+        <a style="color:white;text-decoration:none;" href="https://playtools.github.io/py/"
+            target="_blank">
+            <span style="color: black;position:relative;top:4px;" class="material-symbols-outlined">info</span>
+            <span style="color: black;">Please send any questions or feedback to <a
+                    style="color:black !important;text-decoration:none;"
+                    href="mailto:playgroundhtml@gmail.com?subject=Hello&body=How are you?">playgroundhtml@gmail.com</a></span>
+        </a>
+        <span class="material-symbols-outlined footer-message-close" style="border-radius:25px;">close<span>
+    </aside>
+
+    <script>
+
+    </script>
+
+    <!-- End your code here -->
+    <script type="text/javascript" src="liveweave-python.compressed.js?1735105333"></script>
+    <script type="text/javascript" src="../js/liveweave.lib.compressed.js?1735105333"></script>
+    <script type="text/javascript" src="../js/bind.history.js?1735105333"></script>
+
+</body>
+
+</html>

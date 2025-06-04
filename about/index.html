@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About P Tools - Web Playground & Coding Features</title>
+    <meta name="robots" content="index, follow">
+   <meta name="description" content="Discover P Tools, its mission, and features for web developers. Learn how we simplify coding, preview, and learning for everyone online." />
+    
+    <meta name="author" content="Hamza Javed" />
+    <link rel="canonical" href="https://playtools.github.io/about/index.html" />
+    <link rel="stylesheet" type="text/css" href="css/about-demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/about-component.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <link rel="shortcut icon" href="/images/favicion.png" />
+    <style>
+        footer {
+            background: #000000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* Header styles */
+        .header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 0rem 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e6edf3;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Dropdown menu styles */
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown>a {
+            color: #e6edf3;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            display: block;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-links .dropdown>a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #161b22;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-content li {
+            display: block;
+            padding: 0;
+        }
+
+        .nav-links .dropdown-content a {
+            color: #e6edf3;
+            padding: 0.75rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .nav-links .dropdown-content a:hover {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        /* Show dropdown on hover and toggle */
+        .nav-links .dropdown:hover .dropdown-content,
+        .nav-links .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Active state for clicked dropdown */
+        .nav-links .dropdown.active>a {
+            color: #58a6ff;
+            background: #21262d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #161b22;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links .dropdown {
+                width: 90%;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links .dropdown>a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: 1px solid #30363d;
+            }
+
+            .nav-links .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: #21262d;
+                margin-top: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .nav-links .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        /* Demo content */
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">P TOOLS</a>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">Code Live Preview ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/html-playground/index.html">HTML Preview</a></li>
+                        <li><a href="/py/index.html">Python Preview</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Minify Code ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/minify/css-minifier-app/public/index.html">CSS Minifier</a></li>
+                        <li><a href="/minify/js-minify/index.html">JS Minifier</a></li>
+                        <li><a href="/minify/py-minifiy/index.html">Python Minifier</a></li>
+                        <li><a href="/minify/html-minify/index.html">HTML Minifier</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Other Tools ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/ai/index.html">Chat Bot</a></li>
+                        <li><a href="/colorlist/index.html">Colors List</a></li>
+                        <li><a href="/colors/">Color Circule</a></li>
+                        <li><a href="/cssgen/index.html">CSS Grid Maker</a></li>
+                        <li><a href="/designer/index.html">Design Making</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br>
+    <div class="container">
+        <div id="cbp-so-scroller" class="cbp-so-scroller">
+            <section class="cbp-so-section">
+                <article class="cbp-so-side cbp-so-side-left">
+                    <h2>About</h2>
+                    <p><a href="https://playtools.github.io/" target="_blank">P Tools </a>
+                        is a HTML, CSS & JavaScript editor with real-time (live) preview. It is the ultimate playground
+                        for web designers and developers, and a great tool to test, practice and share your creations,
+                        since 2005! </p>
+                </article>
+                <figure class="cbp-so-side cbp-so-side-right">
+                    <img src="images/1.png" alt="img01">
+                </figure>
+            </section>
+            <section class="cbp-so-section" style="background:#121820;">
+                <figure class="cbp-so-side cbp-so-side-left">
+                    <img src="images/2.png" alt="img01">
+                </figure>
+                <article class="cbp-so-side cbp-so-side-right">
+                    <h2>What's so special about it?</h2>
+                    <p>Well, for starters…it is really easy to use. It has resizable panels, so that you can write your
+                        code (or Player, as we call it) the way you want. P Tools also has built-in
+                        context-sensitive code-hinting for HTML5, CSS3, JavaScript
+                        and jQuery, that makes life a lot easier. You can save your Code in the download single file or
+                        it as a .zip file, play with color palettes, edit in full-screen and a whole lot more!
+                        Oh..there's even a ruler to help you with your next
+                        responsive design!</p>
+                </article>
+            </section>
+            <section class="cbp-so-section">
+                <article class="cbp-so-side cbp-so-side-left">
+                    <h2>External CSS & JavaScript libraries</h2>
+                    <p>If you want to quickly work with jQuery, or say jQueryUI, you don't have to search for the
+                        external libraries online. Just select them from the menu, and you are all set. There are
+                        several libraries, just choose the ones you want.</p>
+                </article>
+                <figure class="cbp-so-side cbp-so-side-right">
+                    <img src="images/3.png" alt="img01">
+                </figure>
+            </section>
+            <section class="cbp-so-section" style="background:#121820;">
+                <figure class="cbp-so-side cbp-so-side-left">
+                    <img src="images/4.png" alt="img01">
+                </figure>
+                <article class="cbp-so-side cbp-so-side-right">
+                    <h2>Code-hinting for HTML, CSS and JavaScript</h2>
+                    <p>We have an awesome code-hinting/auto-completion technology built-in, for HTML, CSS, JavaScript
+                        and jQuery coding. The JavaScript auto-completion in P Tools is one of the
+                        world's most advanced of its kind in any web application.</p>
+                </article>
+            </section>
+            <section class="cbp-so-section">
+                <article class="cbp-so-side cbp-so-side-left">
+                    <h2>Multiple layouts & Night vision</h2>
+                    <p>P Tools has mutliple layouts for all the panels and two themes (dark/light) to
+                        choose from. You can change the layouts on the fly to fit your needs and toggle between
+                        single-click full-screen editing/preview modes. You can also instantly
+                        turn-off Night Vision and toggle between light and dark themes.</p>
+                </article>
+                <figure class="cbp-so-side cbp-so-side-right">
+                    <img src="images/5.png" alt="img01">
+                </figure>
+            </section>
+            <section class="cbp-so-section" style="background:#121820;">
+                <figure class="cbp-so-side cbp-so-side-left">
+                    <img src="images/7.png" alt="img01">
+                </figure>
+                <article class="cbp-so-side cbp-so-side-right">
+                    <p>Created by<br>
+                        <a href="https://www.linkedin.com/in/hamza-javed-177539340/" target="_blank">
+                            <span style="display: inline-block;padding-top:20px;">
+                                <img src="images/me.png" alt="Hamza Javed Picture">
+                            </span>
+                            <span style="color: orange;display: block;padding-top:10px;padding-left:20px;">
+                                Hamza Javed
+                            </span>
+                        </a>
+                    </p>
+                    <p>How to contact us?<br>
+                        <span>
+                            <a href="mailto:playgroundhtml@gmail.com" target="_top">playgroundhtml@gmail.com</a>
+                        </span>
+                    </p>
+                    <br />
+                </article>
+            </section>
+
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Html-Playground-Online. All rights reserved.</p>
+    </footer>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpScroller.js"></script>
+    <script>
+        new cbpScroller(document.getElementById('cbp-so-scroller'));
+    </script>
+</body>
+
+</html>

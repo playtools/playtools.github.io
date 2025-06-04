@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/minify/html-minify/index.html" />
+    <link rel="shortcut icon" href="/images/favicion.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Minifier - Minify Your HTML Code Online | P Tools</title>
+    <meta name="description" content="Use HTML Minifier to quickly minify your HTML code online. Remove comments, spaces, and blank lines for a cleaner, smaller HTML file in seconds." />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">P TOOLS</a>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">Code Live Preview ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/html-playground/index.html">HTML Preview</a></li>
+                        <li><a href="/py/index.html">Python Preview</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Minify Code ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/minify/css-minifier-app/public/index.html">CSS Minifier</a></li>
+                        <li><a href="/minify/js-minify/index.html">JS Minifier</a></li>
+                        <li><a href="/minify/py-minifiy/index.html">Python Minifier</a></li>
+                        <li><a href="/minify/html-minify/index.html">HTML Minifier</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Other Tools ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/ai/index.html">Chat Bot</a></li>
+                        <li><a href="/colorlist/index.html">Colors List</a></li>
+                        <li><a href="/colors/">Color Circule</a></li>
+                        <li><a href="/cssgen/index.html">CSS Grid Maker</a></li>
+                        <li><a href="/designer/index.html">Design Making</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br>
+    <div class="container">
+        <h1>HTML Minifier</h1>
+        <form id="minify-form">
+            <label>Paste HTML Code:</label>
+            <textarea id="html-input" placeholder="Enter your HTML code here..."></textarea>
+            <label>Or enter HTML file URL:</label>
+            <input type="url" id="html-url" placeholder="https://example.com/page.html">
+            <button type="submit">Minify HTML</button>
+        </form>
+        <h2>Minified HTML:</h2>
+        <pre id="minified-output" class="output-box"></pre>
+        <div id="size-info"></div>
+    </div> <br><br>
+    <div class="info-box">
+        <p>
+            Welcome to the <strong>HTML Minifier</strong> tool! This tool helps you reduce the size of your HTML code by
+            removing unnecessary spaces, comments, and blank lines.<br><br>
+            <strong>How to use:</strong>
+        <ul>
+            <li>Paste your HTML code in the <b>Paste HTML Code</b> box <b>OR</b> enter a direct HTML file URL in the
+                <b>Or enter HTML file URL</b> box.
+            </li>
+            <li>Click the <b>Minify Now</b> button below.</li>
+            <li>Your minified HTML will appear below, along with original and minified size information.</li>
+        </ul>
+
+        <span style="font-size:0.95em;color:#555;">
+            Notice how all comments, extra spaces, and blank lines are removed in the minified version!
+        </span>
+        </p>
+    </div>
+    <script src="html-app.js"></script>
+</body>
+
+</html>

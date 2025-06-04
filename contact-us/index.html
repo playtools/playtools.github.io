@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="robots" content="index, follow">
+  <title>Contact Us: Get in Touch with P Tools Support</title>
+  <meta name="description" content="Contact P Tools for inquiries, support, or feedback. Use our contact form or email to connect with our team and get assistance quickly." />
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/contact-us/index.html" />
+<link rel="shortcut icon" href="/images/favicion.png" />
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a1e26; /* Dark background */
+    color: #fff; /* Text color */
+}
+/* Contact Form Styles */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff; /* White inner box */
+    color: #000; /* Black text inside the box */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container input, .container textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container input[type="submit"] {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container input[type="submit"]:hover {
+    background-color: #444444;
+}
+footer {
+    margin-top: 50px;
+    background-color: black; 
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+      /* Header styles */
+        .header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 0rem 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e6edf3;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Dropdown menu styles */
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown > a {
+            color: #e6edf3;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            display: block;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-links .dropdown > a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #161b22;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            z-index: 1001;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-content li {
+            display: block;
+            padding: 0;
+        }
+
+        .nav-links .dropdown-content a {
+            color: #e6edf3;
+            padding: 0.75rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .nav-links .dropdown-content a:hover {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        /* Show dropdown on hover and toggle */
+        .nav-links .dropdown:hover .dropdown-content,
+        .nav-links .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Active state for clicked dropdown */
+        .nav-links .dropdown.active > a {
+            color: #58a6ff;
+            background: #21262d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #161b22;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links .dropdown {
+                width: 90%;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links .dropdown > a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: 1px solid #30363d;
+            }
+            
+            .nav-links .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: #21262d;
+                margin-top: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .nav-links .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        /* Demo content */
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">P TOOLS</a>
+            </div>
+            
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">Code Live Preview ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/html-playground/index.html">HTML Preview</a></li>
+                        <li><a href="/py/index.html">Python Preview</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Minify Code ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/minify/css-minifier-app/public/index.html">CSS Minifier</a></li>
+                        <li><a href="/minify/js-minify/index.html">JS Minifier</a></li>
+                        <li><a href="/minify/py-minifiy/index.html">Python Minifier</a></li>
+                        <li><a href="/minify/html-minify/index.html">HTML Minifier</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Other Tools ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/ai/index.html">Chat Bot</a></li>
+                        <li><a href="/colorlist/index.html">Colors List</a></li>
+                        <li><a href="/colors/">Color Circule</a></li>
+                        <li><a href="/cssgen/index.html">CSS Grid Maker</a></li>
+                        <li><a href="/designer/index.html">Design Making</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<br><br><br>
+
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>Email us: <a href="mailto:playgroundhtml@gmail.com">playgroundhtml@gmail.com</a></p>
+    <p><strong>OR</strong></p>
+    <form action="https://formspree.io/f/xqaabydq" method="post">
+        <input type="text" name="name" placeholder="Name *" required>
+        <input type="email" name="email" placeholder="Email Address *" required>
+        <input type="text" name="subject" placeholder="Subject *" required>
+        <textarea name="message" placeholder="Message *" rows="5" required></textarea>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024  Html-Playground-Online. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('show');
+    }
+</script>
+
+</body>
+</html>

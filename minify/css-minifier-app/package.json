@@ -1,0 +1,17 @@
+{
+  "name": "css-minifier-app",
+  "version": "1.0.0",
+  "description": "A simple web application to minify CSS code or fetch and minify CSS from a URL.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1",
+    "clean-css": "^5.3.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

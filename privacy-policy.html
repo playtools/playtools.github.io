@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Publisher" content="Hamza Javed">
+    <title>P Tools Privacy Policy - Data & User Protection</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Read P Tools Privacy Policy. Learn how your data is handled, protected, and your privacy rights on our online code editor platform." />
+    <meta name="keywords" content="P Tools, P Tools privacy policy, privacy policy page">
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/privacy-policy.html" />
+    <link rel="shortcut icon" href="/images/favicion.png" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1a1e26;
+            /* Dark background */
+            color: #fff;
+            /* Text color */
+        }
+
+        /* Privacy Policy Styles */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            /* White inner box */
+            color: #000;
+            /* Black text inside the box */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .container h2 {
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .container p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        footer {
+            margin-top: 50px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* Header styles */
+        .header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 0rem 0;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e6edf3;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Dropdown menu styles */
+        .nav-links .dropdown {
+            position: relative;
+        }
+
+        .nav-links .dropdown>a {
+            color: #e6edf3;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            display: block;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-links .dropdown>a:hover {
+            color: #58a6ff;
+        }
+
+        .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #161b22;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+
+        .nav-links .dropdown-content li {
+            display: block;
+            padding: 0;
+        }
+
+        .nav-links .dropdown-content a {
+            color: #e6edf3;
+            padding: 0.75rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .nav-links .dropdown-content a:hover {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        /* Show dropdown on hover and toggle */
+        .nav-links .dropdown:hover .dropdown-content,
+        .nav-links .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Active state for clicked dropdown */
+        .nav-links .dropdown.active>a {
+            color: #58a6ff;
+            background: #21262d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #161b22;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links .dropdown {
+                width: 90%;
+                margin: 0.5rem 0;
+            }
+
+            .nav-links .dropdown>a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: 1px solid #30363d;
+            }
+
+            .nav-links .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: #21262d;
+                margin-top: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .nav-links .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .nav-links .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        /* Demo content */
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">P TOOLS</a>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">Code Live Preview ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/html-playground/index.html">HTML Preview</a></li>
+                        <li><a href="/py/index.html">Python Preview</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Minify Code ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/minify/css-minifier-app/public/index.html">CSS Minifier</a></li>
+                        <li><a href="/minify/js-minify/index.html">JS Minifier</a></li>
+                        <li><a href="/minify/py-minifiy/index.html">Python Minifier</a></li>
+                        <li><a href="/minify/html-minify/index.html">HTML Minifier</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Other Tools ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/ai/index.html">Chat Bot</a></li>
+                        <li><a href="/colorlist/index.html">Colors List</a></li>
+                        <li><a href="/colors/">Color Circule</a></li>
+                        <li><a href="/cssgen/index.html">CSS Grid Maker</a></li>
+                        <li><a href="/designer/index.html">Design Making</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <br><br><br>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p>Welcome to the Privacy Policy of P Tools. This notice explains how we collect, use, and safeguard your
+            information when you visit our website. Please read it carefully to understand your rights and our
+            obligations.</p>
+
+        <h2>1. WHAT INFORMATION DO WE COLLECT?</h2>
+        <p>We collect minimal personal information to enhance user experience. Our site does not require login or
+            signup. However, interactions such as contacting us or using specific features may involve data collection.
+        </p>
+
+        <h2>2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
+        <p>We process your data solely for providing services, improving user experience, and maintaining site
+            functionality. We prioritize your privacy and ensure data is handled securely.</p>
+
+        <h2>3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR PERSONAL INFORMATION?</h2>
+        <p>We rely on legitimate interests and user consent where applicable. We do not process sensitive information
+            without explicit consent.</p>
+
+        <h3>Additional Legal Bases for Processing Technical and Anonymous Information</h3>
+        <p>For technical personal data that would require consent, we rely on the following legal bases for processing
+            technical and anonymous information:</p>
+        <ul>
+            <li><strong>Legitimate interest:</strong> We use this as a basis for processing technical information, such
+                as your IP address or device data, to improve website functionality, user experience, and website
+                analytics. As we do not collect personal data, you are not required to provide any consent.</li>
+        </ul>
+
+        <h2>4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h2>
+        <p>Since P Tools does not collect personal information, we do not share any personal details with third parties.
+            However, we may share anonymous data, such as analytics or usage statistics, with trusted third-party
+            service providers who help us analyze website performance, including:</p>
+        <ul>
+            <li><strong>Website analytics tools:</strong> For example, services like Google Analytics, which track
+                website traffic and user interactions. These tools help us improve the website but are not used to track
+                personal data.</li>
+            <li><strong>Ad services (if applicable):</strong> If we include third-party advertisements, they may collect
+                anonymous data through cookies to serve relevant ads.</li>
+        </ul>
+        <p>We ensure that any third-party services comply with privacy and data protection laws.</p>
+
+        <h2>5. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
+        <p>We retain your data only for as long as it is necessary to improve the website and fulfill the purposes
+            outlined in this policy. Since the data we collect is anonymous and non-personal, it is stored temporarily
+            and automatically deleted after a certain period based on our data retention practices.</p>
+        <p><strong>Cookies:</strong> Cookies may be retained for varying durations, but you can manage or delete them at
+            any time via your browser settings.</p>
+
+        <h2>6. DO WE COLLECT INFORMATION FROM MINORS?</h2>
+        <p>P Tools does not knowingly collect information from children under the age of 13. We encourage parents or
+            guardians to supervise the online activities of minors and ensure that no personal data is shared. If we
+            become aware that we have inadvertently collected information from a minor, we will take immediate steps to
+            delete that data.</p>
+
+        <h2>7. WHAT ARE YOUR PRIVACY RIGHTS?</h2>
+        <p>As we do not collect personal information, there are no privacy rights that need to be exercised. However,
+            you are entitled to the following:</p>
+        <ul>
+            <li><strong>Manage cookies:</strong> You can control cookies through your browser settings and opt out of
+                non-essential cookies at any time.</li>
+            <li><strong>Opt-out of analytics services:</strong> If you do not wish to participate in website analytics,
+                you can disable cookies from third-party analytics providers.</li>
+        </ul>
+        <p>We do not process personal data that would require a formal request for access, correction, or deletion.</p>
+
+        <h2>8. CONTROLS FOR DO-NOT-TRACK FEATURES</h2>
+        <p>Some browsers allow you to set a "Do Not Track" (DNT) feature. P Tools does not currently respond to DNT
+            signals because we do not engage in the collection of personal data. However, you can still manage your
+            cookies and tracking preferences directly through your browser settings.</p>
+
+        <h2>9. DO CALIFORNIA RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h2>
+        <p>Under the California Consumer Privacy Act (CCPA), California residents have certain privacy rights regarding
+            their personal data. However, since P Tools does not collect personal information, these rights do not
+            apply. If you are a California resident and have any concerns, feel free to contact us for further
+            clarification.</p>
+
+        <h2>10. DATA LIABILITY</h2>
+        <p>We make every effort to protect your information, but since we do not collect or store sensitive personal
+            data, the risk of exposure is minimal. While we take reasonable precautions to secure any data collected, we
+            cannot guarantee that unauthorized third parties will never be able to defeat our security measures.</p>
+
+        <h2>11. DO WE MAKE UPDATES TO THIS NOTICE?</h2>
+        <p>Yes, we may update this Privacy Policy from time to time to reflect changes in our services, technologies, or
+            legal requirements. Any updates to this policy will be posted on this page, with the revision date updated
+            accordingly. We recommend reviewing this page periodically to stay informed about how we are protecting your
+            information.</p>
+
+        <h2>12. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
+        <p>If you have any questions or concerns regarding this Privacy Policy, please feel free to reach out to us
+            through our <a href="https://playtools.github.io/contact-us/index.html">Contact Us page</a>. We are
+            committed to addressing your concerns promptly.</p>
+
+        <h2>13. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2>
+        <p>Since P Tools does not collect personal information, there is no need for you to review, update, or delete
+            any personal data. If you wish to manage the cookies and technical data we collect, you can do so by
+            adjusting your browser settings to disable or delete cookies.</p>
+
+        <h2>14. What Categories of Personal Information Do We Collect?</h2>
+        <p>We have not collected the following categories of personal information in the past twelve (12) months:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Examples</th>
+                    <th>Collected</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A. Identifiers</td>
+                    <td>Contact details, such as real name, alias, postal address, telephone or mobile contact number,
+                        unique personal identifier, online identifier, Internet Protocol address, email address, and
+                        account name</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>B. Personal information categories listed in the California Customer Records statute</td>
+                    <td>Name, contact information, education, employment, employment history, and financial information
+                    </td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>C. Protected classification characteristics under California or federal law</td>
+                    <td>Gender and date of birth</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>D. Commercial information</td>
+                    <td>Transaction information, purchase history, financial details, and payment information</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>E. Biometric information</td>
+                    <td>Fingerprints and voiceprints</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>F. Internet or other similar network activity</td>
+                    <td>Browsing history, search history, online behavior, interest data, and interactions with our and
+                        other websites, applications, systems, and advertisements</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>G. Geolocation data</td>
+                    <td>Device location</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>H. Audio, electronic, visual, thermal, olfactory, or similar information</td>
+                    <td>Images and audio, video or call recordings created in connection with our business activities
+                    </td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>I. Professional or employment-related information</td>
+                    <td>Business contact details in order to provide you our Services at a business level or job title,
+                        work history, and professional qualifications if you apply for a job with us</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>J. Education Information</td>
+                    <td>Student records and directory information</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>K. Inferences drawn from other personal information</td>
+                    <td>Inferences drawn from any of the collected personal information listed above to create a profile
+                        or summary about, for example, an individual’s preferences and characteristics</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>L. Sensitive Personal Information</td>
+                    <td>N/A</td>
+                    <td>NO</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>15. Withdrawing Your Consent</h2>
+        <p>As we do not collect personal data or require your consent to process it, there is no need for you to
+            withdraw consent. If you want to stop sharing anonymous information such as cookies, you can manage your
+            browser settings at any time to disable cookies.</p>
+
+        <p>P Tools is committed to maintaining the privacy and security of the information you share with us, and we are
+            happy to answer any questions you may have.</p>
+    </div>
+
+
+
+    <footer>
+        <p>&copy; 2024 Html-Playground-Online. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+</body>
+
+</html>

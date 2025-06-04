@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta name="robots" content="index, follow">
+    <title>CSS Generator Tool - Borders, Shadows & More | P Tools</title>
+    <meta name="description"
+        content="Generate CSS for borders, shadows, gradients, and more. Instantly preview and customize styles for your web projects with P Tools CSS Generator." />
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/cssgen/index.html" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript"></script> -->
+    <script src="dojo.js" type="text/javascript"></script>
+    <script type="text/javascript" src="zeroclipboard/ZeroClipboard.js"></script>
+    <script type="text/javascript" src="box-settings.js"></script>
+    <script type="text/javascript" src="touch-helpers.js"></script>
+    <link rel="stylesheet" href="tundra.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/dojo/1.5/dojox/layout/resources/ResizeHandle.css" />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald' type='text/css'>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="shortcut icon" href="/images/favicion.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+    <!-- <script src="http://mrnix.ru/pxgradient/pxgradient-1.0.3.js"></script> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .tundra .dijitAccordionContainer-dijitContentPane {
+            background-color: #272727;
+            background: -webkit-linear-gradient(#444, #222);
+            /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(red, blue);
+            /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(red, blue);
+            /* For Firefox 3.6 to 15 */
+            background: linear-gradient(#444, #222);
+            /* Standard syntax */
+        }
+
+        .tundra .dijitAccordionTitle {
+            background: #333;
+            border-top: 1px solid #555;
+            border-bottom: 2px solid #111;
+        }
+
+        body {
+            color: #ddd;
+            font-family: Oswald, Monaco, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .tundra .dijitBorderContainer {
+            background-color: #222;
+        }
+
+        .dijitAccordionContainer {
+            border: none;
+        }
+
+        div.fieldTitle {
+            border-top: none;
+        }
+
+        .tundra .dijitAccordionTitleSelected {
+            color: #0CF;
+            font-weight: normal;
+            -moz-outline: 0;
+        }
+
+        :focus {
+            outline: 0;
+        }
+
+        input[type="text"] {
+            border: none;
+            background: none;
+            color: #F90;
+            font-size: 25px;
+            text-align: right;
+        }
+
+        .fieldTitle {
+            color: #ccc;
+            margin-left: 60px;
+        }
+
+        .tundra .dijitSliderImageHandleH {
+            background: url("slider_left.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+            border: 0 none;
+            height: 16px;
+            width: 16px;
+        }
+
+        .tundra .dijitSliderFocused .dijitSliderImageHandleH {
+            background-image: url("slider_left.png");
+        }
+
+        .tundra .dijitSliderProgressBarH {
+            background-color: #0CF;
+            border: 1px solid #0CF;
+        }
+
+        .dijitColorPalette {
+            background: none;
+            border: none;
+            position: relative;
+            left: 30px;
+        }
+
+        .dijitColorPalette .dijitPaletteImg {
+            border: none;
+        }
+
+        .tundra .dijitSliderProgressBarH {
+            background: #F90;
+            border: 1px solid #F90;
+        }
+
+        .tundra .dijitSliderLeftBumper {
+            background: #F90;
+            border: 1px solid #F90;
+        }
+
+        #boxShadowColorText,
+        #textShadowColorText,
+        #columnRuleColorText,
+        #bkgndFromColorText,
+        #bkgndToColorText,
+        #borderColorText,
+        #outlineColorText,
+        #backgroundColorText,
+        #textColorText {
+            position: relative;
+            left: 40px;
+            border: none;
+        }
+
+        input[type='button'] {
+            padding: 5px 15px;
+            background-color: #0CF;
+            border: none;
+            color: white;
+            margin-top: 10px;
+            margin-left: 45px;
+            cursor: pointer;
+        }
+
+        select {
+            padding: 15px;
+            background-color: #0CF;
+            color: white;
+            border: none;
+            border-radius: 0;
+            margin-left: 40px;
+            height: 30px;
+            width: 200px;
+        }
+
+        .tundra .dijitSplitterV,
+        .tundra .dijitGutterV {
+            background-color: #222222;
+        }
+
+        .tundra .dijitSplitterV,
+        .tundra .dijitGutterH {
+            background-color: #222222;
+        }
+
+        .tundra .dijitSplitContainer-dijitContentPane,
+        .tundra .dijitBorderContainer-dijitContentPane {
+            background-color: #333333;
+            border: 1px solid #444444;
+        }
+
+        .tundra .dijitSplitterH,
+        .tundra .dijitGutterH {
+            background-color: #222222;
+            border-bottom: 1px solid #444444;
+        }
+
+        #content {
+            background: white;
+            border: 1px solid #444444;
+        }
+
+        #htmlSourceSet {
+            font-family: "Lucida Console", Monaco, monospace, sans-serif;
+            line-height: 20px;
+        }
+    </style>
+
+    <meta property="fb:admins" content="621738122" />
+
+
+
+    <script type="text/javascript">
+        var allBoxes = new Array();
+        var styleSource = "";
+        var runningOpacityAnimation = false;
+        var current = null;
+        var settings = new Object();
+
+        dojo.require("dojo.parser");
+        dojo.require("dijit.layout.ContentPane");
+        dojo.require("dijit.layout.BorderContainer");
+        dojo.require("dijit.layout.AccordionContainer");
+        dojo.require("dijit.form.Slider");
+        dojo.require("dijit.form.ComboBox");
+        dojo.require("dijit.ColorPalette");
+        dojo.require("dojo.dnd.move");
+        dojo.require("dojox.layout.ResizeHandle");
+
+        dojo.addOnLoad(function () {
+            window.setTimeout("EnsureVisible();", 1200);
+            dojo.parser.parse();
+            dojo.animateProperty({
+                node: "container",
+                properties: {
+                    opacity: 1.0
+                },
+                duration: 1000
+            }).play();
+
+            if (TouchHelpers.IsSupported) {
+                // Apply a TouchProxy object to some elements with the specified class names. This will translate touch events to mouse events.
+                new TouchProxy(document, ["box", "dijitSplitter", "dijitSlider", "dijitComboBox"]);
+
+                // Use TouchScroller class to make all panels scrollable by touch-n-drag, but exclude some elements with the specified class
+                // names since they need to respond to touch/mouse events in order to do work.
+                var scrollDivs = ["RadiusPanel", "TextShadowPanel", "TransformPanel", "ColumnPanel", "BorderPanel", "GradientPanel",
+                    "BackgroundPanel", "ContentPanel", "AboutPanel", "htmlSourceSet", "htmlSource"
+                ];
+                var excludeClassNames = ["dijitPaletteImg"];
+                for (var i = 0; i < scrollDivs.length; i++) {
+                    new TouchScroller(dojo.byId(scrollDivs[i]), excludeClassNames);
+                }
+
+                // No scrollbars on touch devices, so change overflow style and use the TouchScroller class instead
+                dojo.byId("SourcePanel").style.overflowY = "hidden";
+                new TouchScroller(dojo.byId("SourcePanel"));
+
+                dojo.byId("contentText").value = "You can edit me using the CSS style controls on the left sidebar. You can also add more like me using the plus icons located at the top right corner.";
+            }
+
+            // Show a button for copying the styles to the clipboard, but only if the browser supports flash since it is a flash plugin
+            // inside the ZeroClipboard component that performs that function.
+            if (navigator.mimeTypes && navigator.mimeTypes["application/x-shockwave-flash"]) {
+                ZeroClipboard.setMoviePath("zeroclipboard/ZeroClipboard.swf");
+                var clip = new ZeroClipboard.Client();
+                clip.addEventListener("mouseDown", function (client) {
+                    clip.setText(styleSource);
+                });
+                clip.glue("CopyToClipboard");
+                dojo.connect(window, "onresize", function () {
+                    clip.reposition();
+                });
+                var clipFlash = dojo.byId("ZeroClipboardMovie_1");
+                if (clipFlash) {
+                    if (clipFlash.parentNode) {
+                        clipFlash.parentNode.setAttribute("title", dojo.byId("CopyToClipboard").title);
+                    }
+                }
+            } else {
+                dojo.byId("CopyToClipboard").style.display = "none";
+            }
+
+            // Create all objects that handle the controls and setting of box styles from those controls
+            settings["border-radius"] = new BorderRadiusSetting("borderRadius", GetCurrent, OutputSource);
+            settings["box-shadow"] = new BoxShadowSetting("boxShadow", GetCurrent, OutputSource);
+            settings["text-shadow"] = new TextShadowSetting("textShadow", GetCurrent, OutputSource);
+            settings["transform"] = new TransformSetting("transform", GetCurrent, OutputSource);
+            settings["gradient-bkgnd"] = new GradientBackgroundSetting("bkgnd", GetCurrent, OutputSource);
+            settings["border"] = new BorderSetting("border", GetCurrent, OutputSource);
+            settings["background"] = new BackgroundSetting("background", GetCurrent, OutputSource);
+            settings["padding"] = new SingleNumberSetting("padding", 0, 50, "px", "padding", GetCurrent, OutputSource);
+            settings["z-index"] = new SingleNumberSetting("z-index", -10, 10, null, "zIndex", GetCurrent, OutputSource);
+            settings["opacity"] = new OpacitySetting("opacity", GetCurrent, OutputSource);
+            settings["text"] = new TextSetting("text", GetCurrent, OutputSource);
+            settings["content"] = new ContentSetting("content", GetCurrent, OutputSource);
+            settings["outline"] = new OutlineSetting("outline", GetCurrent, OutputSource);
+            settings["columns"] = new ColumnSetting("column", GetCurrent, OutputSource);
+
+            AddBox();
+            RefreshButtons();
+        });
+
+        function GetCurrent() {
+            return current;
+        }
+
+        function OutputSource() {
+            OutputBrowserStyle();
+            styleSource = "";
+
+            for (var setting in settings) {
+                styleSource += settings[setting].ToStyle(current);
+            }
+
+            var styleHtml = styleSource;
+            //styleHtml = "<p>" + styleHtml.replace(/\r\n/g, "</p><p>") + "</p>";
+            styleHtml = styleHtml.replace(/\r\n/g, "<br>");
+            dojo.byId("htmlSourceSet").innerHTML = styleHtml;
+        }
+
+        function OutputBrowserStyle() {
+            if (!runningOpacityAnimation) {
+                var str = current.Element.getAttribute("style");
+                if (str.replace)
+                    str = str.replace(/; */g, ";<br />");
+                dojo.byId("htmlSource").innerHTML = str;
+            }
+        }
+
+        function AddBox() {
+            current = new Box();
+            allBoxes.push(current);
+
+            UpdatePreview();
+            RefreshButtons();
+        }
+
+        function UpdatePreview() {
+            for (var setting in settings) {
+                settings[setting].Update(true);
+            }
+            OutputSource();
+        }
+
+        function DeleteBox() {
+            if (allBoxes.length == 1)
+                return;
+
+            current.Element.parentNode.removeChild(current.Element);
+            for (var pos = 0; pos < allBoxes.length && allBoxes[pos] != current; pos++);
+            allBoxes.splice(pos, 1);
+            if (pos == allBoxes.length)
+                pos = allBoxes.length - 1;
+            current = allBoxes[pos];
+            SetControls(current);
+            RefreshButtons();
+            Flash(current);
+        }
+
+        function SetControls(box) {
+            for (var setting in settings) {
+                settings[setting].Set(box);
+            }
+            OutputSource();
+        }
+
+        function RefreshButtons() {
+            var btn = dojo.byId("deleteButton");
+            if (allBoxes.length <= 1) {
+                btn.disabled = true;
+                btn.style.opacity = 0.5;
+            } else {
+                btn.disabled = false;
+                btn.style.opacity = 1.0;
+            }
+        }
+
+        function Flash(box) {
+            var el = box.Element;
+            var currentOpacity = parseFloat(box.Opacity);
+            runningOpacityAnimation = true;
+            if (currentOpacity == 1.0) {
+                el.style.opacity = 0.5;
+                dojo.animateProperty({
+                    node: el,
+                    properties: {
+                        opacity: 1.0
+                    },
+                    duration: 500,
+                    onEnd: function () {
+                        runningOpacityAnimation = false;
+                        el.style.opacity = null;
+                    }
+                }).play();
+            } else if (currentOpacity < 0.5) {
+                el.style.opacity = 1.0;
+                dojo.animateProperty({
+                    node: el,
+                    properties: {
+                        opacity: currentOpacity
+                    },
+                    duration: 500,
+                    onEnd: function () {
+                        runningOpacityAnimation = false;
+                    }
+                }).play();
+            } else {
+                el.style.opacity = 0.0;
+                dojo.animateProperty({
+                    node: el,
+                    properties: {
+                        opacity: currentOpacity
+                    },
+                    duration: 500,
+                    onEnd: function () {
+                        runningOpacityAnimation = false;
+                    }
+                }).play();
+            }
+        }
+
+        function EnsureVisible() {
+            var el = dojo.byId("container");
+            el.style.opacity = 1;
+        }
+
+        function SetLongText() {
+            var content = dojo.byId("contentText");
+            content.value = "<p>Lorem ipsum malorum prompta voluptaria ne has, cum choro corrumpit ex. In delenit laoreet voluptatum sea. Cetero saperet percipit mei ad, eu diam eirmod eum.</p>\r\n";
+            content.value += "<p>Mucius sapientem sea ad, ei brute nemore deseruisse pri. Sed cu elit fierent. Pri in sapientem abhorreant, mea magna latine consequat at, nam choro delicatissimi ex. Curabitur in quam ac mauris lobortis commodo id nec dolor.</p>\r\n";
+            content.value += "<p>Vide autem eum id. Docendi singulis gubergren est ne, ne sed augue impedit. Ne partem accumsan usu, sed posse dicant accusata ea, te idque graeco mnesarchum eos.</p>\r\n";
+            content.value += "<p>Civibus repudiandae vis ut. Duo eu brute praesent mnesarchum. Ne putent legendos voluptaria sit, in tritani vivendum eam, animal inermis percipitur ad vix.</p>";
+            content.value += "<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce et erat ligula, vel posuere lectus. Pellentesque habitant morbi tristique senectus et netus.</p>";
+            settings["content"].Update();
+
+            document.getElementById("textAlignment").selectedIndex = 0;
+            settings["text"].Update();
+
+            if (current.Element.offsetWidth < 600)
+                current.Element.style.width = "600px";
+            if (current.Element.offsetHeight < 375)
+                current.Element.style.height = "375px";
+        }
+
+        caches.delete('test-cache').then(function () {
+            console.log('Cache successfully deleted!');
+        });
+    </script>
+    <style>
+        /* Header styles */
+        .ptools-menu {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 0rem 0;
+        }
+
+        .ptools-menu .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .ptools-menu .logo a {
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .ptools-menu .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        /* Hamburger menu styles */
+        .ptools-menu .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .ptools-menu .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e6edf3;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .ptools-menu .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .ptools-menu .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .ptools-menu .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Dropdown menu styles */
+        .ptools-menu .nav-links .dropdown {
+            position: relative;
+        }
+
+        .ptools-menu .nav-links .dropdown>a {
+            color: #e6edf3;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            display: block;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .ptools-menu .nav-links .dropdown>a:hover {
+            color: #58a6ff;
+        }
+
+        .ptools-menu .nav-links .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #161b22;
+            min-width: 200px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            padding: 0.5rem 0;
+            list-style: none;
+        }
+
+        .ptools-menu .nav-links .dropdown-content li {
+            display: block;
+            padding: 0;
+        }
+
+        .ptools-menu .nav-links .dropdown-content a {
+            color: #e6edf3;
+            padding: 0.75rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .ptools-menu .nav-links .dropdown-content a:hover {
+            background: #21262d;
+            color: #58a6ff;
+        }
+
+        /* Show dropdown on hover and toggle */
+        .ptools-menu .nav-links .dropdown:hover .dropdown-content,
+        .ptools-menu .nav-links .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Active state for clicked dropdown */
+        .ptools-menu .nav-links .dropdown.active>a {
+            color: #58a6ff;
+            background: #21262d;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .ptools-menu .hamburger {
+                display: flex;
+            }
+
+            .ptools-menu .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: #161b22;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+
+            .ptools-menu .nav-links.active {
+                left: 0;
+            }
+
+            .ptools-menu .nav-links .dropdown {
+                width: 90%;
+                margin: 0.5rem 0;
+            }
+
+            .ptools-menu .nav-links .dropdown>a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: 1px solid #30363d;
+            }
+
+            .ptools-menu .nav-links .dropdown-content {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background: #21262d;
+                margin-top: 0;
+                width: 100%;
+                display: none;
+            }
+
+            .ptools-menu .nav-links .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .ptools-menu .nav-links .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        }
+
+        /* Demo content */
+        .ptools-menu+.content {
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="tundra">
+    <!-- Header -->
+    <header class="header ptools-menu">
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">P TOOLS</a>
+            </div>
+
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">Code Live Preview ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/html-playground/index.html">HTML Preview</a></li>
+                        <li><a href="/py/index.html">Python Preview</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Minify Code ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/minify/css-minifier-app/public/index.html">CSS Minifier</a></li>
+                        <li><a href="/minify/js-minify/index.html">JS Minifier</a></li>
+                        <li><a href="/minify/py-minifiy/index.html">Python Minifier</a></li>
+                        <li><a href="/minify/html-minify/index.html">HTML Minifier</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Other Tools ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/ai/index.html">Chat Bot</a></li>
+                        <li><a href="/colorlist/index.html">Colors List</a></li>
+                        <li><a href="/colors/">Color Circule</a></li>
+                        <li><a href="/cssgen/index.html">CSS Grid Maker</a></li>
+                        <li><a href="/designer/index.html">Design Making</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="Msg" style="position: absolute; top: 0px; left: 0px; background-color: yellow; z-index: 100;"></div>
+    <div class="body" id="container" dojoType="dijit.layout.BorderContainer" design="sidebar" style="opacity: 0;">
+        <div class="toolbox" id="tools" dojoType="dijit.layout.ContentPane" region="left" splitter="true"
+            style="padding: 0px; border: none;">
+
+
+            <div id="toolboxContainer" dojoType="dijit.layout.AccordionContainer" style="margin-top:40px;">
+                <div dojoType="dijit.layout.AccordionPane" title=" Radius and Box Shadow" id="RadiusPanel">
+                    <div class="fieldTitle">Border Radius</div>
+                    <div class="fieldNumber"><input id="borderRadiusText" name="borderRadiusText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="borderRadiusSlider"></div>
+                    <div class="fieldTitle">Box Shadow Offset</div>
+                    <div class="fieldNumber"><input id="boxShadowOffsetText" id="boxShadowOffsetText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="boxShadowOffsetSlider"></div>
+                    <div class="fieldTitle">Box Shadow Blur</div>
+                    <div class="fieldNumber"><input id="boxShadowBlurText" name="boxShadowBlurText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="boxShadowBlurSlider"></div>
+                    <div class="fieldTitle">Box Shadow Color</div>
+                    <div class="fieldNumber"><input id="boxShadowColorText" name="boxShadowColorText" type="text"
+                            style="width: 100px;" value="#000000" /></div>
+                    <div class="fieldPalette" id="boxShadowColorPalette"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title=" Text Shadow" id="TextShadowPanel">
+                    <div class="fieldTitle">Text Shadow Offset</div>
+                    <div class="fieldNumber"><input id="textShadowOffsetText" id="textShadowOffsetText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="textShadowOffsetSlider"></div>
+                    <div class="fieldTitle">Text Shadow Blur</div>
+                    <div class="fieldNumber"><input id="textShadowBlurText" name="textShadowBlurText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="textShadowBlurSlider"></div>
+                    <div class="fieldTitle">Text Shadow Color</div>
+                    <div class="fieldNumber"><input id="textShadowColorText" name="textShadowColorText" type="text"
+                            style="width: 100px;" value="#000000" /></div>
+                    <div class="fieldPalette" id="textShadowColorPalette"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title=" Transforms" id="TransformPanel">
+                    <div class="fieldTitle">Rotate</div>
+                    <div class="fieldNumber"><input id="transformRotateText" name="transformRotateText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="transformRotateSlider"></div>
+                    <div class="fieldTitle">Scale</div>
+                    <div class="fieldNumber"><input id="transformScaleText" name="transformScaleText" type="text"
+                            style="width: 40px;" value="1.0" /></div>
+                    <div class="fieldSlider" id="transformScaleSlider"></div>
+                    <div class="fieldTitle">Skew X/Horizontal</div>
+                    <div class="fieldNumber"><input id="transformSkewText" name="transformSkewText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="transformSkewSlider"></div>
+                    <div class="fieldTitle">Skew Y/Vertical</div>
+                    <div class="fieldNumber"><input id="transformSkewYText" name="transformSkewYText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="transformSkewYSlider"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title=" Columns" id="ColumnPanel">
+                    <div>
+                        <input type="button" value="Set size and text for testing" onclick="SetLongText();" />
+                    </div>
+                    <div class="fieldTitle">Columns</div>
+                    <div class="fieldNumber"><input id="columnCountText" type="text" style="width: 40px;" value="1" />
+                    </div>
+                    <div class="fieldSlider" id="columnCountSlider"></div>
+                    <div class="fieldTitle">Gap</div>
+                    <div class="fieldNumber"><input id="columnGapText" type="text" style="width: 40px;" value="5" />
+                    </div>
+                    <div class="fieldSlider" id="columnGapSlider"></div>
+                    <div class="fieldTitle">Rule Thickness</div>
+                    <div class="fieldNumber"><input id="columnRuleWidthText" type="text" style="width: 40px;"
+                            value="0" /></div>
+                    <div class="fieldSlider" id="columnRuleWidthSlider"></div>
+                    <div class="fieldTitle">Rule Color</div>
+                    <div class="fieldNumber"><input id="columnRuleColorText" type="text" style="width: 100px;"
+                            value="#000000" /></div>
+                    <div class="fieldPalette" id="columnRuleColorPalette"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title=" Gradient Background" id="GradientPanel">
+                    <div class="fieldTitle">Direction</div>
+                    <div class="fieldList">
+                        <select id="bkgndDirection" style="border-radius:none;">
+                            <option selected="selected">None</option>
+                            <option>Horizontal</option>
+                            <option>Vertical</option>
+                            <option>Diagonal from Top Left</option>
+                            <option>Diagonal from Top Right</option>
+                        </select>
+                    </div>
+                    <div class="fieldTitle">From Color</div>
+                    <div class="fieldNumber"><input id="bkgndFromColorText" type="text" style="width: 100px;"
+                            value="#6666FF" /></div>
+                    <div class="fieldPalette" id="bkgndFromColorPalette"></div>
+                    <div class="fieldTitle">From Position (relative)</div>
+                    <div class="fieldNumber"><input id="bkgndFromPositionText" type="text" style="width: 40px;"
+                            value="0" /></div>
+                    <div class="fieldSlider" id="bkgndFromPositionSlider"></div>
+                    <div class="fieldTitle">To Color</div>
+                    <div class="fieldNumber"><input id="bkgndToColorText" type="text" style="width: 100px;"
+                            value="#FFFF66" /></div>
+                    <div class="fieldPalette" id="bkgndToColorPalette"></div>
+                    <div class="fieldTitle">To Position (relative)</div>
+                    <div class="fieldNumber"><input id="bkgndToPositionText" type="text" style="width: 40px;"
+                            value="100" /></div>
+                    <div class="fieldSlider" id="bkgndToPositionSlider"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title="Border and Outline" id="BorderPanel">
+                    <div class="fieldTitle">Border Thickness</div>
+                    <div class="fieldNumber"><input id="borderWidthText" name="borderWidthText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="borderWidthSlider"></div>
+                    <div class="fieldTitle">Border Color</div>
+                    <div class="fieldNumber"><input id="borderColorText" name="borderColorText" type="text"
+                            style="width: 140px;" value="" /></div>
+                    <div class="fieldPalette" id="borderColorPalette"></div>
+                    <div class="fieldTitle">Outline Thickness</div>
+                    <div class="fieldNumber"><input id="outlineWidthText" name="outlineWidthText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="outlineWidthSlider"></div>
+                    <div class="fieldTitle">Outline Offset</div>
+                    <div class="fieldNumber"><input id="outlineOffsetText" name="outlineOffsetText" type="text"
+                            style="width: 40px;" value="0" /></div>
+                    <div class="fieldSlider" id="outlineOffsetSlider"></div>
+                    <div class="fieldTitle">Outline Color</div>
+                    <div class="fieldNumber"><input id="outlineColorText" name="outlineColorText" type="text"
+                            style="width: 100px;" value="" /></div>
+                    <div class="fieldPalette" id="outlineColorPalette"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title="Background" id="BackgroundPanel">
+                    <div class="fieldTitle">Background Color</div>
+                    <div class="fieldNumber"><input id="backgroundColorText" name="backgroundColorText" type="text"
+                            style="width: 140px;" value="#DDDDDD" /></div>
+                    <div class="fieldPalette" id="backgroundColorPalette"></div>
+                    <div class="fieldTitle">Opacity (0.0 = fully transparent)</div>
+                    <div class="fieldNumber"><input id="opacityText" name="opacityText" type="text" style="width: 40px;"
+                            value="1.0" /></div>
+                    <div class="fieldSlider" id="opacitySlider"></div>
+                    <div class="fieldTitle">Z-index</div>
+                    <div class="fieldNumber"><input id="zIndexText" name="zIndexText" type="text" style="width: 40px;"
+                            value="0" /></div>
+                    <div class="fieldSlider" id="zIndexSlider"></div>
+                </div>
+                <div dojoType="dijit.layout.AccordionPane" title="Content and Text" id="ContentPanel">
+                    <div class="fieldTitle">Content</div>
+                    <div><textarea id="contentText" name="contentText"
+                            style="width: 90%; height: 150px;">You can edit me using the CSS style controls on the left sidebar. You can also add more like me using the plus icons located at the top right corner. </textarea>
+                    </div>
+                    <div class="fieldTitle">Padding</div>
+                    <div class="fieldNumber"><input id="paddingText" name="paddingText" type="text" style="width: 40px;"
+                            value="10" /></div>
+                    <div class="fieldSlider" id="paddingSlider"></div>
+                    <div class="fieldTitle">Text Size</div>
+                    <div class="fieldNumber"><input id="textSizeText" name="textSizeText" type="text"
+                            style="width: 40px;" value="12" /></div>
+                    <div class="fieldSlider" id="textSizeSlider"></div>
+                    <!--div class="fieldList"><input id="fontText" name="fontText" type="text" style="width: 90%;" value="" /></div-->
+                    <div class="fieldList" style="display:none;">
+                        <select id="textFont" name="textFont" style="width: 90%;">
+                            <option>Verdana, Geneva, sans-serif</option>
+                            <option>"Gill Sans", "Gill Sans MT", Calibri, sans-serif</option>
+                            <option>Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif
+                            </option>
+                            <option>"Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma,
+                                sans-serif</option>
+                            <option>"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif
+                            </option>
+                        </select>
+                    </div>
+                    <div class="fieldList" style="padding-top: 4px;display:none;">
+                        <input id="textBold" type="checkbox"> <label for="textBold">Bold</label>
+                        <input id="textItalic" type="checkbox"> <label for="textItalic">Italic</label>
+                    </div>
+                    <div class="fieldTitle">Text Color</div>
+                    <div class="fieldNumber"><input id="textColorText" name="textColorText" type="text"
+                            style="width: 100px;" value="#888888" /></div>
+                    <div class="fieldPalette" id="textColorPalette"></div>
+                    <div class="fieldTitle">Alignment</div>
+                    <div class="fieldList">
+                        <select id="textAlignment" name="textAlignment">
+                            <option>Left</option>
+                            <option selected="selected">Center</option>
+                            <option>Right</option>
+                            <option>Justify</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="canvas" id="content" dojoType="dijit.layout.ContentPane" region="center"
+            style="position: relative;">
+            <div id="buttonBar">
+                <input id="add
+                Button" type="image" src="add.png" title="Add new preview box" style="opacity:0.5;"
+                    onclick="AddBox();" />
+                <input id="deleteButton" type="image" src="delete.png" title="Delete selected preview box"
+                    onclick="DeleteBox();" />
+            </div>
+        </div>
+        <div class="text" dojoType="dijit.layout.ContentPane" region="bottom" splitter="true" id="SourcePanel">
+            <div style="float: left; width: 100%;">
+                <div style="float: right; margin-right: 20px; display: none;">
+                    <input id="CopyToClipboard" type="image" src="copy.png"
+                        title="Copy style instructions to clipboard" />
+                </div>
+                <!-- <div class="toolTitle">CSS source for the selected box above</div> -->
+                <div class="styleSource" id="htmlSourceSet"></div>
+            </div>
+            <div style="float: left; width: 50%;display:none;">
+                <div class="toolTitle" style="padding-left: 5px;border-left: solid 1px #EEE;"
+                    title="Don't use these styles. They are only displayed as an indication of how the current browser interprets the styles.">
+                    Style as read from browser
+                    <superscript>*</superscript>
+                </div>
+                <div class="styleSource" style="padding-left: 5px;border-left: solid 1px #EEE;" id="htmlSource"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("beforeunload", function (e) {
+            var confirmationMessage = "\o/";
+
+            e.returnValue = confirmationMessage; // Gecko, Trident, Chrome 34+
+            return confirmationMessage; // Gecko, WebKit, Chrome <34
+        });
+    </script>
+</body>
+
+</html>

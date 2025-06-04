@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>HTML Playground - Live HTML, CSS & JS Editor Online</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description"
+        content="Experiment with HTML, CSS, and JavaScript in our online playground. Get instant live preview, debug tools, and learn coding interactively." />
+    <meta name="Publisher" content="Hamza Javed">
+    <link rel="canonical" href="https://playtools.github.io/html-playground/index.html" />
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
+    <!-- Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- ...existing code... -->
+    <link rel="stylesheet" href="../css/alertify.core.css?1735029083" />
+    <link rel="stylesheet" href="../css/alertify.default.css?1735029083" />
+    <link rel="stylesheet" href="../css/alertify.bootstrap.css?1735029083" />
+    <link rel="shortcut icon" href="/images/favicion.png" />
+
+    <link rel="stylesheet" href="../css/liveweave.css?1735029083" />
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../js/jquery.history.js?1735029083"></script>
+    <script type="text/javascript" src="../js/alertify.js?1735029083"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"></script>
+    <script type="text/javascript" src="../js/jszip.min.js?1735029083"></script>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,-25" />
+
+    <!-- Message Box -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&family=Ubuntu:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/footer-message.css?1735029083">
+
+    <script src="https://rawgit.com/RickStrahl/jquery-resizable/master/src/jquery-resizable.js"></script>
+
+    <!-- Monaco -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/editor/editor.main.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+    <!-- ...existing code... -->
+    <style>
+        /* HTML: <div class="loader"></div> */
+
+        .loader {
+            height: 45px;
+            --c: no-repeat linear-gradient(#0195c1 0 0);
+            background: var(--c) left, var(--c) center, var(--c) right;
+            background-size: 16px 100%;
+            animation: l33-1 1.5s infinite, l33-2 1.5s infinite;
+        }
+
+        @keyframes l33-1 {
+
+            0%,
+            100% {
+                width: 45px
+            }
+
+            35%,
+            65% {
+                width: 65px
+            }
+        }
+
+        @keyframes l33-2 {
+
+            0%,
+            40% {
+                transform: rotate(0)
+            }
+
+            60%,
+            100% {
+                transform: rotate(90deg)
+            }
+        }
+
+        /* Add to your CSS file or <style> tag */
+        #preview-newtab a {
+            color: #58a6ff;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+
+        #preview-newtab a:hover {
+            color: #1e90ff;
+        }
+    </style>
+
+</head>
+
+<body onresize="resizer()">
+    <!-- Start your code here -->
+
+    <div id="splashscreen">
+        <div class="load-container">
+            <div style="padding-bottom:20px;">
+                <span style="color: #777;font-size:32px;">Loading Please Wait......<span>
+            </div>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+
+    <div class="drop">
+        <ul class="drop_menu">
+
+            <!-- Left align menu -->
+            <!-- <li><a href='#' class='logo'>Liveweave</a></li> -->
+            <li>
+                <a href='#'><span
+                        style="background: url('../images/logo-2.svg') no-repeat;display:inline-block;width:30px;height:20px"></span>
+                    <span class="icon-label" style="display:inline-block;">P Tools <span
+                            class="editor-mode">Web</span></span>
+                    <span class="material-symbols-outlined icon-dropdown"
+                        style="padding-right:10px;">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li id="home"><a href='https://playtools.github.io/' class="medium"><span
+                                class="sub-menu-item"><span class="material-symbols-outlined">home</span> <span
+                                    class="icon-label">Home</span></span>
+                        </a>
+                    </li>
+                    <li id="css-explorer"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">data_object</span> <span class="icon-label">CSS
+                                    Explorer</span> <span class="material-symbols-outlined">arrow_outward</span> </span>
+                        </a>
+                    </li>
+                    <li id="color-explorer"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">Palette</span> <span class="icon-label">Color
+                                    Explorer</span> <span class="material-symbols-outlined">arrow_outward</span>
+                            </span></a>
+                    </li>
+                    <li id="vector-editor"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">Polyline</span> <span class="icon-label">Graphics
+                                    Editor</span> <span class="material-symbols-outlined">arrow_outward</span>
+                            </span></a>
+                    </li>
+                    <li id="generative-ai"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">outbox_alt</span> <span
+                                    class="icon-label">Generative AI</span>
+                                <span class="material-symbols-outlined">arrow_outward</span> </span></a>
+                    </li>
+                    <li id="python"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">frame_source</span>
+                                <span class="icon-label">Python Playground</span>
+                                <span class="badge">New</span>
+                                <span class="material-symbols-outlined"
+                                    style="position:relative;left:-6px;">arrow_outward</span></span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+
+            <li>
+                <a href='#'><span class="material-symbols-outlined">build</span> <span class="icon-label">Tools</span>
+                    <span class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li id="load-template"><a href="#" class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">restart_alt</span> <span class="icon-label">Load
+                                    "P Tools!"</span></span></a></li>
+                    <li id="generator-ipsum"><a href="#" class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">post_add</span> <span class="icon-label">Generate
+                                    Lorem ipsum...</span></span></a></li>
+                    <li id='format-html' onclick='formatHTML()'><a href='#' class="medium"><span
+                                class="sub-menu-item"><span class="material-symbols-outlined">code</span> <span
+                                    class="icon-label">Format HTML</span></span></a></li>
+                    <li id='format-css' onclick='formatCSS()'><a href='#' class="medium"><span
+                                class="sub-menu-item"><span class="material-symbols-outlined">code_blocks</span> <span
+                                    class="icon-label">Format CSS</span></span></a></li>
+                    <li id='format-js' onclick='formatJS()'><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">data_object</span> <span class="icon-label">Format
+                                    JavaScript</span></span></a></li>
+                </ul>
+            </li>
+            <li><a href='#'><span class="material-symbols-outlined">library_add</span> <span
+                        class="icon-label">Library</span> <span
+                        class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul
+                    style="height: 400px;display: flex;flex-direction: column;flex-wrap: wrap;width:950px;padding-left:10px;">
+                    <!-- 1 -->
+                    <li id='lib-algolia-js'><span class="list-label">A</span><a href='#'>Algolia JS</a></li>
+                    <li id='lib-animate-css'><a href='#'>Animate CSS</a></li>
+                    <li id='lib-apex-charts-js'><a href='#'>Apex Charts JS</a></li>
+                    <li id='lib-bulma-css'><span class="list-label">B</span><a href='#'>Bulma CSS</a></li>
+                    <li id='lib-bootstrap'><a href='#'>Bootstrap</a></li>
+                    <li id='lib-chart-js'><span class="list-label">C</span><a href='#'>Chart JS</a></li>
+                    <li id='lib-chartist'><a href='#'>Chartist</a></li>
+                    <li id='lib-create-js'><a href='#'>Create JS</a></li>
+                    <li id='lib-d3-js'><span class="list-label">D</span><a href='#'>D3</a></li>
+                    <li id='lib-dojo-js'><a href='#'>Dojo</a></li>
+                    <li id='lib-foundation'><span class="list-label">F</span><a href='#'>Foundation</a></li>
+                    <li id='lib-fullpage-js'><a href='#'>Fullpage JS</a></li>
+                    <li id='lib-granim-js'><span class="list-label">G</span><a href='#'>Granim JS</a></li>
+                    <li id='lib-google-charts'><a href='#'>Google Charts</a></li>
+                    <li id='lib-halfmoon'><span class="list-label">H</span><a href='#'>Halfmoon</a></li>
+                    <li id='lib-jquery'><span class="list-label">J</span><a href='#'>jQuery</a></li>
+                    <li id='lib-materialize'><span class="list-label">M</span><a href='#'>Materialize</a></li>
+                    <li id='lib-moment-js'><a href='#'>Moment JS</a></li>
+                    <li id='lib-masonry-js'><a href='#'>Masonry JS</a></li>
+                    <li id='lib-milligram-css'><a href='#'>Milligram CSS</a></li>
+                    <li id='lib-pure-css'><span class="list-label">P</span><a href='#'>Pure CSS</a></li>
+                    <li id='lib-primer-css'><a href='#'>Primer CSS</a></li>
+                    <li id='lib-popper-js'><a href='#'>Popper JS</a></li>
+                    <li id='lib-pattern-css'><a href='#'>Pattern CSS</a></li>
+                    <li id='lib-picnic-css'><a href='#'>Picnic CSS</a></li>
+                    <li id='lib-react-js'><span class="list-label">R</span><a href='#'>React JS</a></li>
+                    <li id='lib-raphael-js'><a href='#'>Raphael JS</a></li>
+                    <li id='lib-raisin-css'><a href='#'>Raisin CSS</a></li>
+                    <li id='lib-sematic'><span class="list-label">S</span><a href='#'>Semantic UI</a></li>
+                    <li id='lib-skeleton-css'><a href='#'>Skeleton CSS</a></li>
+                    <li id='lib-spectre-css'><a href='#'>Spectre CSS</a></li>
+                    <li id='lib-tachyons-css'><a href='#'>Tachyons CSS</a></li>
+                    <li id='lib-tailwind'><span class="list-label">T</span><a href='#'>Tailwind</a></li>
+                    <li id='lib-three-js'><a href='#'>Three JS</a></li>
+                    <li id='lib-uikit'><span class="list-label">U</span><a href='#'>UI Kit</a></li>
+                    <li id='lib-vis-js'><a href='#'>Vis JS</a></li>
+                    <li id='lib-water-css'><span class="list-label">W</span><a href='#'>Water CSS</a></li>
+
+                </ul>
+            </li>
+
+            <!-- download -->
+            <li>
+                <a href='#'><span class="material-symbols-outlined">download</span> <span
+                        class="icon-label">Download</span> <span
+                        class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li id="download-code"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">developer_mode</span> <span
+                                    class="icon-label">Download as HTML</span></span></a></li>
+                    <li id="download-zip"><a href='#' class="medium"><span class="sub-menu-item"><span
+                                    class="material-symbols-outlined">folder_zip</span> <span
+                                    class="icon-label">Download as .ZIP</span></span></a></li>
+                </ul>
+            </li>
+
+            <!-- submit -->
+            <li>
+                <button type="submit" form="myform" class="btn-submit">
+                    <span class="material-symbols-outlined">cloud_upload</span> <span class="icon-label">Save</span>
+                </button>
+            </li>
+
+            <!-- settings -->
+            <li class="align-right " style="padding-right: 15px;">
+                <a href='#'><span class="material-symbols-outlined">settings</span> <span
+                        class="icon-label">Settings</span> <span
+                        class="material-symbols-outlined icon-dropdown">expand_more</span></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a>
+                            <div class="range-container">
+                                <!-- <span>10<span style="font-size: 80%">px</span></span> -->
+                                <input type="range" min="10" max="24" value="14" class="range" id="range-font-size">
+                                <!-- <span>24<span style="font-size: 80%">px</span></span> -->
+                                <span><span id="current-font-size">14</span><span
+                                        style="font-size: 80%">px</span></span>
+
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-live-mode' onclick='checkLiveMode()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Live mode
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-theme' onclick='checkTheme()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Night mode
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-line-number' onclick='checkLineNumber()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Line number
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" id='chk-mini-map' onclick='checkMiniMap()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Mini map
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select">
+                            <label class="switch">
+                                <input type="checkbox" checked id='chk-word-wrap' onclick='checkWordWrap()'>
+                                <span class="slider round"></span>
+                            </label>
+                            &nbsp; Word wrap
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' class="no-select" id="settings-reset"><span class="material-symbols-outlined"
+                                style="position:relative;left:-10px;top:4px;">sync_alt</span> Reset Settings
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="align-right" id="run">
+                <a href='#'>
+                    <span class="material-symbols-outlined">smart_display</span> <span class="icon-label">Run</span>
+                </a>
+            </li>
+            <li class="align-right" id="preview-newtab" style="padding-right: 15px;">
+                <a href="#" onclick="openPreviewInNewTab(); return false;" title="Open Preview in New Tab">
+                    <span class="material-symbols-outlined">open_in_new</span>
+                    <span class="icon-label">Preview in New Tab</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Editor form -->
+    <form action="submit.php" method="post" id="myform">
+        <div
+            style="position:fixed;top:40px;left:0;width:100%;height:calc(100% - 70px);overflow: hidden; background:var(--main-bg);z-index:0;">
+            <div id="a" class="split split-horizontal" style="overflow:hidden;">
+                <div id="html" class="split content" onkeyup="render()" style="position:relative;">
+                    <img src="../images/html.svg" style="height:40px;" class="lang-logo" alt="HTML Window">
+                </div>
+                <div id="css" class="split content" onkeyup="render()" style="position:relative;">
+                    <img src="../images/css.svg" style="height:40px;" class="lang-logo" alt="CSS Window">
+                </div>
+            </div>
+            <div id="b" class="split split-horizontal" style="overflow:hidden;">
+                <div id="js" class="split content" onkeyup="render()" style="position:relative;">
+                    <img src="../images/js.svg" style="height:30px;" class="lang-logo" alt="JavaScript Window">
+                </div>
+                <iframe id="preview" class="split content" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div style="display:none;">
+            <textarea id="html-source" name="html-source"></textarea>
+            <textarea id="css-source" name="css-source"></textarea>
+            <textarea id="js-source" name="js-source"></textarea>
+        </div>
+
+
+        <input type="text" name="dummy-title" id="dummy-title" value="" />
+        <input type="text" name="dummy-layout" id="dummy-layout" value="1" />
+        <input type="text" name="dummy-theme" id="dummy-theme" value="0" />
+        <input type="text" name="dummy-privacy" id="dummy-privacy" value="0" />
+        <input type="text" name="dummy-id" id="dummy-id" value="" />
+    </form>
+
+    <footer class="footer">
+        <ul style="font-size:12px;">
+            <li><a href="../about/index.html" target="_blank" title="About us">About</a></li>
+
+            <li><a href="../colorlist/" target="_blank" title="P Tools Color Lab">Colors</a></li>
+            <li><a href="../contact-us/index.html" target="_blank" title="Contact us">Contact</a></li>
+            <li><a href="/privacy-policy.html" target="_blank" title="P Tools Privacy Policy">Privacy</a></li>
+        </ul>
+    </footer>
+
+
+
+
+    <!--
+<button id="toggleShowCase" class="toggle-showcase-btn toggle-showcase-state" 
+    style="width:200px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;position:absolute;bottom:0;left:50%;padding:10px 20px;border:none;background:#444; transform: translateX(-50%); cursor:pointer;color:#eee;font-size:14px;height:30px; transition: background-color 0.6s ease, width 0.6s ease;">
+    <span style="position:relative;top:-4px;">&#9714;</span>
+    <span style="position:relative;top:-2px;"> &nbsp; Web Gallery</span>
+    <span class="badge">New</span>
+</button>
+
+    <div class="panel-container-vertical" id="resizableDiv"  style="display: flex;">
+        <div class="panel-top resizable toggle-showcase-btn" style="opacity:0;z-index:-10;">&nbsp;</div>
+        <div class="splitter-horizontal" style="touch-action: none;"></div>
+        <div class="panel-bottom">
+        <div class="gallery" style="left: 10px;z-index:9;border-top-left-radius: 10px;border-top-right-radius: 10px;"><span style="position:relative;top:-2px;">&#9714;</span> &nbsp; Web Gallery</div>
+        <div class="gallery" style="left: 195px;background:#0195c1;border-top-right-radius: 10px;border-top-left-radius: 10px;z-index:-1;">
+            <span style="position:relative;top:-2px;color:#fff;">&#9714;</span>
+            <a href="../py/" target="_blank" style="color:#fff;text-decoration:none;"> &nbsp; Try Python Playground &nbsp; </a>
+            <span class="material-symbols-outlined" style="position:absolute;font-weight: bold;color: white !important;">arrow_outward</span>
+        </div>
+        <button class="toggle-showcase-btn close-showcase-btn">
+            <i class="fas fa-times"></i>
+        </button>
+        <iframe src="showcase.php" id="showcaseIframe" style="width:100%;height:100%;border:none;"></iframe>
+        </div>
+        </div>
+    </div>
+    -->
+
+    <script>
+        // Close footer message with fade-out effect
+        function closeFooterMessage() {
+            var footerMessage = document.getElementById('footerMessage');
+            footerMessage.style.opacity = '0'; // Trigger the fade out
+            setTimeout(function () {
+                footerMessage.style.display = 'none'; // Hide the element after the fade out
+            }, 500); // Matches the duration of the fade-out transition
+        }
+
+        $(document).ready(function () {
+
+            $('.toggle-showcase-btn').on('click', function () {
+                $('#resizableDiv').fadeToggle(500);
+                $('#toggleShowCase').toggleClass('toggle-showcase-state');
+            });
+
+            $(".panel-top").resizable({
+                handleSelector: ".splitter-horizontal",
+                resizeWidth: false
+            });
+
+            // Scroll to the top when the iframe content is fully loaded
+            $('#showcaseIframe').on('load', function () {
+                this.contentWindow.scrollTo(0, 0);
+            });
+
+        });
+    </script>
+
+    <!-- ...existing code... -->
+    <script type="text/javascript" src="../js/liveweave.compressed.js?1735029083"></script>
+    <script type="text/javascript" src="../js/liveweave.lib.compressed.js?1735029083"></script>
+    <script type="text/javascript" src="../js/bind.history.js?1735029083"></script>
+    <script>
+        function openPreviewInNewTab() {
+            var iframe = document.getElementById('preview');
+            if (iframe && iframe.contentDocument) {
+                // Always get the latest preview content
+                var html = iframe.contentDocument.documentElement.outerHTML;
+                var newWindow = window.open();
+                newWindow.document.open();
+                newWindow.document.write(html);
+                newWindow.document.close();
+            } else {
+                alert('Preview is not ready yet!');
+            }
+        }
+    </script>
+    <!-- ...existing code... -->
+</body>
+
+</html>

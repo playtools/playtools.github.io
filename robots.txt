@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://playtools.github.io/sitemap.xml

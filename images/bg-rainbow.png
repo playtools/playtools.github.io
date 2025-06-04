@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="cache-control" content="no-cache"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="-1"><style type="text/css">body {
+  background: #00091B;
+  color: #fff;
+}
+
+
+@keyframes fadeIn {
+  from {top: 20%; opacity: 0;}
+  to {top: 100; opacity: 1;}
+  
+}
+
+@-webkit-keyframes fadeIn {
+  from {top: 20%; opacity: 0;}
+  to {top: 100; opacity: 1;}
+  
+}
+
+.wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  animation: fadeIn 1000ms ease;
+  -webkit-animation: fadeIn 1000ms ease;
+  text-align: center;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  line-height: 1;
+  font-weight: 700;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+    font-size: 30px;
+
+}
+
+.dot {
+  color: #4FEBFE;
+}
+
+p {
+  text-align: center;
+  margin: 18px;
+  font-family: 'Muli', sans-serif;
+  font-weight: normal;
+  
+}
+
+.icons {
+  text-align: center;
+  
+}
+
+.icons i {
+  color: #00091B;
+  background: #fff;
+  height: 15px;
+  width: 15px;
+  padding: 13px;
+  margin: 0 10px;
+  border-radius: 50px;
+  border: 2px solid #fff;
+  transition: all 200ms ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.icons i:hover, .icons i:active {
+  color: #fff;
+  background: none;
+  cursor: pointer !important;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  text-decoration: none;
+  
+}
+button {
+  background: #00bfff;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+</style>
+
+
+<title>Liveweave - Downtime</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<script>document.addEventListener("touchstart", function(){}, true);</script> 
+</head>
+<body onresize="refreshPage()">
+<!-- Start your code here -->
+<canvas width="1556" height="532"></canvas>
+<div class="wrapper">
+  <!--
+  <h1>fix<span class="dot">.</span>rex</h1>
+-->
+<img src="images/logo-2.svg" alt="Liveweave logo" style="height:110px;">
+<h1>Liveweave</h1>
+  <p>Sorry, can't seem to find the page!</p>
+ </div>
+<!-- End your code here -->
+
+<script>window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+var NodesGrid = (function() {
+  'use strict';
+  var WIDTH, HEIGHT,
+      canvas, ctx,
+      pointsArr;
+
+  WIDTH = window.innerWidth;
+  HEIGHT = window.innerHeight;
+
+  function init(cnvs) {
+
+    canvas = cnvs;
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    ctx = canvas.getContext('2d');
+
+    pointsArr = generatePoints(20);
+
+    renderFrame();
+
+  }
+
+  // redraw each frame
+  function renderFrame() {
+    window.requestAnimFrame(renderFrame, canvas);
+    ctx.fillStyle = '#1d1f20';
+    ctx.fillRect(0, 0, WIDTH, HEIGHT);
+    pointsArr.forEach(renderPoint);
+  }
+
+  // update points
+  function renderPoint(point, i) {
+    var radius,
+        len,
+        nextPoint,
+        speed,
+        gravity = 0.79;
+
+    len = pointsArr.length - 2;
+    radius = 2;
+    nextPoint = pointsArr[i + 10];
+    speed = 0.01;
+
+    point.vx += (point.targetX - point.x) * speed;
+    point.vx *= gravity;
+
+    point.x += point.vx;
+
+    checkBoundaries(point);
+
+    ctx.save();
+
+    if (nextPoint) {
+      ctx.strokeStyle = '#eee';
+      ctx.lineWidth = 0.5;
+      ctx.moveTo(point.x, point.y);
+      ctx.lineTo(nextPoint.x, nextPoint.y);
+      ctx.stroke();
+      ctx.fillStyle = '#eee';
+      ctx.beginPath();
+      ctx.arc(point.x, point.y, radius, 0, Math.PI * 2, true);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  // handle screen bounaries
+  function checkBoundaries(point) {
+    var dx, dist;
+    if (point.x < 10) point.targetX = canvas.width - 5;
+    dx = (point.targetX - point.x);
+    dist = Math.sqrt(dx * dx);
+    if (dist <= 10) {
+      point.targetX = -5; 
+    }
+  }
+
+  // populate an array with pos
+  function generatePoints(num) {
+    var pos,
+        x, y,
+        pointsArr,
+        gridX, gridY;
+
+    pointsArr = [];
+
+    gridX = WIDTH / 10;
+    gridY = HEIGHT / 10;
+
+    for (x = 0; x <= canvas.width; x += gridX) {
+      for (y = 0; y <= canvas.height; y += gridY) {
+        pos = {
+          x: x, 
+          y: y,
+          vx: 0,
+          targetX: -1,
+          oldX: x
+        };
+        pointsArr.push(pos);
+      }
+    }
+
+    return pointsArr;
+
+  }
+  return {
+    init: init
+  }
+
+}());
+
+var canvas
+canvas = document.querySelector('canvas');
+
+NodesGrid.init(canvas);</script></body>
